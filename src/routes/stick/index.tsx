@@ -101,7 +101,7 @@ export default component$(() => {
     return (
         <div class={css({
             display: "flex",
-           flexDirection: "column",
+            flexDirection: "column",
             lg: { flexDirection: "row" },
             overflow: "hidden",
             height: "100vh",

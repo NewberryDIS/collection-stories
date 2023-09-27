@@ -24,89 +24,78 @@ export const Card = component$<CardProps>((props) => {
         <div
             class={css({
                 position: "sticky",
-                minHeight: "100vh",
+                top: "10px",
                 display: "flex",
-                flexDirection: "column",
+                // flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                "& .card": {
-                    maxHeight: "75vh",
-                    width: "80%",
-                    margin: "auto",
-                    background: "rgba(var(--fg-color-1), 0.75)",
-                    color: "rgb(var(--bg-color-1))",
+                flexWrap: 'wrap',
+                gap: "32px",
+                "& .container": {
+                    alignSelf: "flex-start",
+                    backdropFilter: "blur(16px) saturate(180%)",
+                    backgroundColor: "rgba(17, 25, 40, 0.25)",
+                    borderRadius: "12px",
+                    border: "1px solid rgba(255, 255, 255, 0.125)",
+                    padding: "32px",
+                    filter: "drop-shadow(0 30px 10px rgba(0,0,0,0.125))",
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "flex-start",
-                    justifyContent: "space-evenly",
-                    "& .image": {
-                        display: "flex",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        // maxHeight: "50vh",
-                        // width: "100%",
-                        "& img": {
-                            flex: 1,
-                            // maxHeight: "50vh",
-                            // width: "100%",
-                            // maxHeight: "100%",
-                            // objectFit: "cover",
-                        },
-                    },
-                    "& .text": {
-                        padding: "16px",
-                        flex: 1,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        justifyContent: "center",
-                        gap: "16px",
-                        "& .title": {
-                            fontSize: "1.25rem",
-                            color: "rgb(var(--splash))",
-                        },
-                        "& .blurb": {},
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "16px",
+                    textAlign: "center",
+                    minWidth: '464px',
+                },
+                '& img': {
+                    height: "400px",
+                },
+                '& h2': {
+                    fontSize: '3rem',
+                    lineHeight: '3rem',
+                },
+                "& p": {
+                    textAlign: "center",
+                    letterSpacing: "2px",
+                },
 
-                        "& .btn-group": {
-                            width: "100%",
-                            display: "flex",
-                            alignItems: "center",
-                            gap: "8px",
-                            "& button": {
-                                borderRadius: "4px",
-                                flex: 1,
-                                fontFamily: "styrene",
-                                background: "rgb(var(--bg-color-1))",
-                                color: "rgb(var(--fg-color-1))",
-                            },
-                        },
+                "& .btn-group": {
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "8px",
+                    "& a": {
+                        borderRadius: "4px",
+                        flex: 1,
+                        fontFamily: "styrene",
+                        background: "rgb(var(--bg-color-1))",
+                        color: "rgb(var(--fg-color-1))",
                     },
                 },
+                '& .disabled': {
+                    cursor: "not-allowed",
+                    opacity: 0.5,
+                    background: "rgba(var(--bg-color-1), 0.5)",
+
+                },
+                "& .text-section": {
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "16px",
+                }
             })}
         >
-            <div className="card">
-                <div className="image">
-                    {image.map((img) => (
-                        <img
-                            src={
-                                img.altfn
-                                    ? img.altfn
-                                    : `https://collections.newberry.org/IIIF3/Image/${img.ctxid}/full/,300/0/default.jpg`
-                            }
-                            alt={blurb}
-                            width={img.width}
-                            height={img.height}
-                        />
-                    ))}
-                </div>
-                <span className="text">
-                    <h2 className="title">{title}</h2>
-                    <p className="blurb">{blurb}</p>
-                    <div className="btn-group">
-                        <button>View</button>
-                        <button>About</button>
-                    </div>
-                </span>
+            <div class="container">
+                <img class="banner-image" src={image[0].altfn ? "/" + image[0].altfn : `https://collections.newberry.org/IIIF3/Image/${image[0].ctxid}/full/,400/0/default.jpg`}  width={image[0].height === 400 ? image[0].width : Math.round((image[0].width / image[0].height) * 400)} height="400" style={`width: ${image[0].height === 400 ? image[0].width : Math.round((image[0].width / image[0].height) * 400)}px`} />
+                <div class="text-section" style={`width: ${image[0].height === 400 ? image[0].width : Math.round((image[0].width / image[0].height) * 400)}px`} >
+                    <h2>{title}</h2>
+                    <p>{blurb}</p>
+                    <div class="btn-group">
+                        <a href={view} target="_blank">View </a>
+                        <a href={about.endsWith(']') ? '#' : about} class={about.endsWith(']') ? 'disabled' : ''} target="_blank">About</a>
+                    </div></div>
             </div>
         </div>
     );
