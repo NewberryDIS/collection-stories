@@ -110,6 +110,8 @@ html {
 h1,
 h2 {
     font-family: "flecha";
+}
+h1 {
     color: rgb(var(--splash-color));
 }
 h3,

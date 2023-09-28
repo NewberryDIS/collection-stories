@@ -16,10 +16,12 @@ type Data = {
 };
 export interface CardProps {
     data: Data;
+    idx: number;
 }
 
 export const Card = component$<CardProps>((props) => {
     const { image, title, blurb, view, about } = props.data;
+    const h2color = props.idx > 2 ? "midnight" : "flame";
     return (
         <div
             class={css({
@@ -29,7 +31,7 @@ export const Card = component$<CardProps>((props) => {
                 // flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-                flexWrap: 'wrap',
+                flexWrap: "wrap",
                 gap: "32px",
                 "& .container": {
                     alignSelf: "flex-start",
@@ -45,14 +47,20 @@ export const Card = component$<CardProps>((props) => {
                     justifyContent: "center",
                     gap: "16px",
                     textAlign: "center",
-                    minWidth: '464px',
+                    minWidth: "464px",
                 },
-                '& img': {
+                "& img": {
                     height: "400px",
                 },
-                '& h2': {
-                    fontSize: '3rem',
-                    lineHeight: '3rem',
+                "& h2": {
+                    fontSize: "3rem",
+                    lineHeight: "3rem",
+                    "&.midnight": {
+                        color: "rgb(var(--midnight))",
+                    },
+                    "&.flame": {
+                        color: "rgb(var(--flame))",
+                    },
                 },
                 "& p": {
                     textAlign: "center",
@@ -72,11 +80,10 @@ export const Card = component$<CardProps>((props) => {
                         color: "rgb(var(--fg-color-1))",
                     },
                 },
-                '& .disabled': {
+                "& .disabled": {
                     cursor: "not-allowed",
                     opacity: 0.5,
                     background: "rgba(var(--bg-color-1), 0.5)",
-
                 },
                 "& .text-section": {
                     display: "flex",
@@ -84,18 +91,58 @@ export const Card = component$<CardProps>((props) => {
                     alignItems: "center",
                     justifyContent: "center",
                     gap: "16px",
-                }
+                },
             })}
         >
             <div class="container">
-                <img class="banner-image" src={image[0].altfn ? "/" + image[0].altfn : `https://collections.newberry.org/IIIF3/Image/${image[0].ctxid}/full/,400/0/default.jpg`}  width={image[0].height === 400 ? image[0].width : Math.round((image[0].width / image[0].height) * 400)} height="400" style={`width: ${image[0].height === 400 ? image[0].width : Math.round((image[0].width / image[0].height) * 400)}px`} />
-                <div class="text-section" style={`width: ${image[0].height === 400 ? image[0].width : Math.round((image[0].width / image[0].height) * 400)}px`} >
-                    <h2>{title}</h2>
+                <img
+                    class="banner-image"
+                    src={
+                        image[0].altfn
+                            ? "/" + image[0].altfn
+                            : `https://collections.newberry.org/IIIF3/Image/${image[0].ctxid}/full/,400/0/default.jpg`
+                    }
+                    width={
+                        image[0].height === 400
+                            ? image[0].width
+                            : Math.round(
+                                  (image[0].width / image[0].height) * 400,
+                              )
+                    }
+                    height="400"
+                    style={`width: ${
+                        image[0].height === 400
+                            ? image[0].width
+                            : Math.round(
+                                  (image[0].width / image[0].height) * 400,
+                              )
+                    }px`}
+                />
+                <div
+                    class="text-section"
+                    style={`width: ${
+                        image[0].height === 400
+                            ? image[0].width
+                            : Math.round(
+                                  (image[0].width / image[0].height) * 400,
+                              )
+                    }px`}
+                >
+                    <h2 class={h2color}>{title}</h2>
                     <p>{blurb}</p>
                     <div class="btn-group">
-                        <a href={view} target="_blank">View </a>
-                        <a href={about.endsWith(']') ? '#' : about} class={about.endsWith(']') ? 'disabled' : ''} target="_blank">About</a>
-                    </div></div>
+                        <a href={view} target="_blank">
+                            View{" "}
+                        </a>
+                        <a
+                            href={about.endsWith("]") ? "#" : about}
+                            class={about.endsWith("]") ? "disabled" : ""}
+                            target="_blank"
+                        >
+                            About
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     );
