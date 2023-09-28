@@ -93,37 +93,43 @@ export default component$(() => {
             class={css({
                 display: "flex",
                 flexDirection: "column",
-                lg: { flexDirection: "row" },
                 overflow: "hidden",
-                height: "100vh",
+                height: "auto",
+                lg: {
+                    flexDirection: "row",
+                    height: "100vh",
+                },
                 position: "relative",
                 width: "100%",
                 "& .loof": {
-                    height: "100vh",
+                    position: "sticky",
+                    top: 0,
+                    height: {
+                        sm: "auto",
+                        md: "auto",
+                        lg: "100vh",
+                        xl: "100vh",
+                    },
                     backgroundColor: "rgb(var(--bg-color-1))",
                     color: "#bbb",
                     padding: "16px",
-
                     flex: 0,
                     display: "flex",
                     flexDirection: "column",
                     sm: {
-
-                    flexDirection: "column",
+                        flexDirection: "column",
                     },
                     md: {
-
-                    flexDirection: "row",
+                        flexDirection: "row",
                     },
                     lg: {
-
-                    flexDirection: "column",
+                        flexDirection: "column",
                     },
                     alignItems: "flex-start",
                     justifyContent: "space-between",
                 },
                 "& h1": {
-                    fontSize: "10vh",
+                    fontSize: "min(10vh, 13vw)",
                 },
                 "& .text-content p, h1": {
                     padding: "16px",
@@ -154,14 +160,20 @@ export default component$(() => {
                         "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(241,97,81,1) 85%, rgba(241,97,81,1) 100%)",
                 },
                 "& .spooky": {
-                    minHeight: "87vh",
+                    minHeight: "auto",
+                    lg: {
+                        minHeight: "40vh",
+                    },
                     display: "flex",
 
                     alignItems: "center",
                     justifyContent: "center",
                 },
                 "& .wrap": {
-                    height: "150vh",
+                    height: "77vh",
+                    // lg: {
+                    //     height: "90vh",
+                    // },
                 },
                 "& .col": {
                     margin: "30px",
@@ -205,7 +217,11 @@ export default component$(() => {
                     <div class="spooky">
                         <img
                             src="/spooky.gif"
-                            class={css({ opacity: 0.33 })}
+                            class={css({
+                                opacity: 0.33,
+                                position: "absolute",
+                                top: "20vh",
+                            })}
                             alt="a very spooky ghost that floats along the screen"
                         />
                     </div>
@@ -218,7 +234,11 @@ export default component$(() => {
                     ))}
                     <div
                         class={css({
-                            height: "222vh",
+                            // height: { sm: "100vh", md: "100vh", lg: "222vh" },
+                            height: "100vh",
+                            lg: {
+                                height: "222vh",
+                            },
                             backgroundImage: "url('/spookyshlflibrary.png')",
                             backgroundSize: "contain",
                             backgroundPosition: "bottom center",

@@ -19,6 +19,9 @@ export interface CardProps {
     idx: number;
 }
 
+import ColoringBookPage from "~/media/coloringbookpage.png?jsx";
+import HalloweenCostumes from "~/media/halloween-costumes.gif";
+
 export const Card = component$<CardProps>((props) => {
     const { image, title, blurb, view, about } = props.data;
     const h2color = props.idx > 2 ? "midnight" : "flame";
@@ -43,16 +46,18 @@ export const Card = component$<CardProps>((props) => {
                     filter: "drop-shadow(0 30px 10px rgba(0,0,0,0.125))",
                     display: "flex",
                     flexDirection: "column",
-                    alignItems: "center",
+                    alignItems: "stretch",
                     justifyContent: "center",
                     gap: "16px",
                     textAlign: "center",
-                    minWidth: "464px",
+                    maxWidth: "464px",
                 },
                 "& img": {
-                    height: "400px",
+                    margin: "auto",
                 },
                 "& h2": {
+                    // maxWidth: "100vw",
+                    minWidth: "0",
                     fontSize: "3rem",
                     lineHeight: "3rem",
                     "&.midnight": {
@@ -63,6 +68,9 @@ export const Card = component$<CardProps>((props) => {
                     },
                 },
                 "& p": {
+                    // maxWidth: "90%",
+                    minWidth: "0",
+                    width: "100%",
                     textAlign: "center",
                     letterSpacing: "2px",
                 },
@@ -78,6 +86,11 @@ export const Card = component$<CardProps>((props) => {
                         fontFamily: "styrene",
                         background: "rgb(var(--bg-color-1))",
                         color: "rgb(var(--fg-color-1))",
+                        border: "1px solid rgba(var(--fg-color-1), 0.4)",
+                        transition: "200ms",
+                    },
+                    "& a:hover": {
+                        border: "1px solid rgb(var(--fg-color-1))",
                     },
                 },
                 "& .disabled": {
@@ -86,6 +99,8 @@ export const Card = component$<CardProps>((props) => {
                     background: "rgba(var(--bg-color-1), 0.5)",
                 },
                 "& .text-section": {
+                    maxWidth: "100%",
+                    // width: "100%",
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
@@ -96,7 +111,6 @@ export const Card = component$<CardProps>((props) => {
         >
             <div class="container">
                 <img
-                    class="banner-image"
                     src={
                         image[0].altfn
                             ? "/" + image[0].altfn
@@ -118,16 +132,7 @@ export const Card = component$<CardProps>((props) => {
                               )
                     }px`}
                 />
-                <div
-                    class="text-section"
-                    style={`width: ${
-                        image[0].height === 400
-                            ? image[0].width
-                            : Math.round(
-                                  (image[0].width / image[0].height) * 400,
-                              )
-                    }px`}
-                >
+                <div class="text-section">
                     <h2 class={h2color}>{title}</h2>
                     <p>{blurb}</p>
                     <div class="btn-group">
