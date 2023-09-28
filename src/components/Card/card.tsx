@@ -19,12 +19,9 @@ export interface CardProps {
     idx: number;
 }
 
-import ColoringBookPage from "~/media/coloringbookpage.png?jsx";
-import HalloweenCostumes from "~/media/halloween-costumes.gif";
-
 export const Card = component$<CardProps>((props) => {
     const { image, title, blurb, view, about } = props.data;
-    const h2color = props.idx > 2 ? "midnight" : "flame";
+    const h2color = props.idx > 3 ? "midnight" : "flame";
     return (
         <div
             class={css({
@@ -69,6 +66,7 @@ export const Card = component$<CardProps>((props) => {
                 },
                 "& p": {
                     // maxWidth: "90%",
+                    fontSize: "lg",
                     minWidth: "0",
                     width: "100%",
                     textAlign: "center",

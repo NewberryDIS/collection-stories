@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Card } from "~/components/Card/card";
 import { css } from "~/styled-system/css";
+import SpookyLibrary from "~/media/spookylibrary.png?jsx";
 
 const cards = [
     {
@@ -135,6 +136,7 @@ export default component$(() => {
                     padding: "16px",
                 },
                 "& .text-content p": {
+                    fontSize: "lg",
                     // display: 'none',
                     // lg: { display: 'block'},
                 },
@@ -158,8 +160,15 @@ export default component$(() => {
 
                     background:
                         "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(241,97,81,1) 85%, rgba(241,97,81,1) 100%)",
+                    display: "flex",
+                    flexWrap: "wrap",
+                    gap: "16px",
+                    alignItems: "flex-start",
+                    justifyContent: "center",
+                    // marginBottom: "100vh",
                 },
                 "& .spooky": {
+                    pointerEvents: "none",
                     minHeight: "auto",
                     lg: {
                         minHeight: "40vh",
@@ -177,8 +186,8 @@ export default component$(() => {
                 },
                 "& .col": {
                     margin: "30px",
-                    position: "sticky",
-                    top: "15px",
+                    // position: "sticky",
+                    // top: "15px",
                 },
             })}
         >
@@ -219,33 +228,52 @@ export default component$(() => {
                             src="/spooky.gif"
                             class={css({
                                 opacity: 0.33,
-                                position: "absolute",
+                                position: "fixed",
                                 top: "20vh",
+                                right: 0,
                             })}
                             alt="a very spooky ghost that floats along the screen"
                         />
                     </div>
                     {cards.map((card, idx) => (
-                        <div key={idx} class="wrap">
-                            <div class="col">
-                                <Card data={card} idx={idx} />
-                            </div>
+                        <div key={idx} class="col">
+                            <Card data={card} idx={idx} />
                         </div>
                     ))}
-                    <div
-                        class={css({
-                            // height: { sm: "100vh", md: "100vh", lg: "222vh" },
-                            height: "100vh",
-                            lg: {
-                                height: "222vh",
-                            },
-                            backgroundImage: "url('/spookyshlflibrary.png')",
-                            backgroundSize: "contain",
-                            backgroundPosition: "bottom center",
-                            backgroundRepeat: "no-repeat",
+                </div>
+                <div
+                    class={css({
+                        // height: { sm: "100vh", md: "100vh", lg: "222vh" },
+                        // position: "absolute",
+                        // top: 0,
+                        // bottom: 0,
+                        // left: 0,
+                        // right: 0,
+                        height: "120vh",
+                        display: "flex",
+                        flexDirection: "column",
+                        justifyContent: "flex-end",
+                        // lg: {
+                        //     height: "222vh",
+                        // },
+                        backgroundColor: "rgb(var(--flame))",
+                        "& img": {
+                            zIndex: "99999",
                             opacity: "0.5",
-                        })}
-                    ></div>
+                            // backgroundImage:
+                            //     "url('/spookyshlflibrary.png')",
+                            // backgroundSize: "contain",
+                            // backgroundPosition: "bottom center",
+                            // backgroundRepeat: "no-repeat",
+                            width: "100%",
+                        },
+                    })}
+                >
+                    <SpookyLibrary />
+                    {/* <img */}
+                    {/*     src="/spookyshlflibrary.png" */}
+                    {/*     alt="a spooke library, a version of the newberry as though made from paper, with books in the windows, and bats and jack o lanterns strewn about" */}
+                    {/* /> */}
                 </div>
             </div>
         </div>
