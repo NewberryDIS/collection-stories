@@ -6,6 +6,7 @@ import SpookyLibrary from "~/media/spookylibrary.png?jsx";
 import NewberryLogo from "~/media/NewberryLogo_flame.png?jsx";
 import { Arrow } from "~/components/Arrow/arrow";
 import { basePathname } from "@qwik-city-plan";
+import { Ghost } from "~/components/Ghost/ghost";
 
 const cards = [
   {
@@ -256,6 +257,7 @@ export default component$(() => {
       </div>
       <div class="riiit">
         <div class="liner">
+                    <Ghost />
           <div
             class={css({
               position: "fixed",
@@ -295,11 +297,12 @@ export default component$(() => {
         </div>
         <div
           class={css({
-            height: "120vh",
+            height: "125vh",
             display: "flex",
             flexDirection: "column",
             justifyContent: "flex-end",
             backgroundColor: "rgb(var(--flame))",
+                        pointerEvents: "none",
             "& img": {
               zIndex: "99999",
               opacity: "0.5",
