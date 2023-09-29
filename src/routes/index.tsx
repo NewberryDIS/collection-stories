@@ -2,6 +2,8 @@ import { component$ } from "@builder.io/qwik";
 import { Card } from "~/components/Card/card";
 import { css } from "~/styled-system/css";
 import SpookyLibrary from "~/media/spookylibrary.png?jsx";
+import NewberryLogo from '~/media/NewberryLogo_flame.png?jsx'
+import { Arrow } from "~/components/Arrow/arrow";
 
 const cards = [
     {
@@ -113,7 +115,8 @@ export default component$(() => {
                     },
                     backgroundColor: "rgb(var(--bg-color-1))",
                     color: "#bbb",
-                    padding: "16px",
+
+                    padding: "42px 0px 0px 0px",
                     flex: 0,
                     display: "flex",
                     flexDirection: "column",
@@ -124,6 +127,7 @@ export default component$(() => {
                         flexDirection: "row",
                     },
                     lg: {
+                        padding: "0",
                         flexDirection: "column",
                     },
                     alignItems: "flex-start",
@@ -131,6 +135,7 @@ export default component$(() => {
                 },
                 "& h1": {
                     fontSize: "min(10vh, 13vw)",
+                    lineHeight: "min(10vh, 13vw)",
                 },
                 "& .text-content p, h1": {
                     padding: "16px",
@@ -156,33 +161,9 @@ export default component$(() => {
                     backgroundAttachment: "fixed",
                 },
                 "& .liner": {
-                    margin: "auto",
-
                     background:
                         "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(241,97,81,1) 85%, rgba(241,97,81,1) 100%)",
-                    display: "flex",
-                    flexWrap: "wrap",
-                    gap: "16px",
-                    alignItems: "flex-start",
-                    justifyContent: "center",
-                    // marginBottom: "100vh",
-                },
-                "& .spooky": {
-                    pointerEvents: "none",
-                    minHeight: "auto",
-                    lg: {
-                        minHeight: "40vh",
-                    },
-                    display: "flex",
-
-                    alignItems: "center",
-                    justifyContent: "center",
-                },
-                "& .wrap": {
-                    height: "77vh",
-                    // lg: {
-                    //     height: "90vh",
-                    // },
+                    padding: "32px",
                 },
                 "& .col": {
                     margin: "30px",
@@ -192,6 +173,21 @@ export default component$(() => {
             })}
         >
             <div class="loof">
+                <div class={css({
+                    position: "absolute",
+                    top: "10px",
+                    left: "16px",
+                    zIndex: 22,
+                    lg: {
+                        padding: "10px 0 0 16px",
+                        position: "relative",
+                        top: 0,
+                        left: 0,
+
+                    }
+                })}>
+                    <NewberryLogo />
+                </div>
                 <h1>
                     A Very
                     <br />
@@ -220,23 +216,65 @@ export default component$(() => {
                         updates.
                     </p>
                 </div>
+                <footer class={css({
+                    width: "100%",
+                    flexBasis: "24px",
+                    backgroundColor: "rgba(var(--fg-color-2), 0.77)",
+                    display: "flex",
+
+                    alignItems: "center",
+                    justifyContent: "center",
+
+                    "&:hover": {
+                        backgroundColor: "rgba(var(--fg-color-2), 1)",
+                    },
+                    "& a": {
+                        padding: "0 8px",
+                        fontFamily: "styrene",
+                        fontSize: "14px",
+                        lineHeight: "14px",
+                        _firstOfType: {
+                            borderRight: "2px solid rgba(var(--fg-color-1), 0.5)",
+                        },
+                    },
+                })}>
+                    <a target="_blank" href="https://collections.newberry.org">The Newberry</a>
+                    <a target="_blank" href="https://www.newberry.org/contact-librarian">Contact Us</a>
+
+                </footer>
             </div>
             <div class="riiit">
                 <div class="liner">
-                    <div class="spooky">
+                    <div class={css({
+                        position: "fixed",
+                        top: 0,
+                        bottom: 0,
+                        left: 0,
+                        right: 0,
+                        display: "flex",
+                        alignItems: "flex-start",
+                        justifyContent: "flex-end",
+                        pointerEvents: "none",
+                    })}>
                         <img
                             src="/spooky.gif"
                             class={css({
+
                                 opacity: 0.33,
-                                position: "fixed",
-                                top: "20vh",
-                                right: 0,
                             })}
                             alt="a very spooky ghost that floats along the screen"
                         />
                     </div>
+                    <div class={css({
+                        height: "77vh",
+                        display: "flex",
+                        alignItems: "flex-end",
+                        justifyContent: "center",
+                    })}>
+                        <Arrow />
+                    </div>
                     {cards.map((card, idx) => (
-                        <div key={idx} class="col">
+                        <div id={`card-${idx}`} key={idx} class="col">
                             <Card data={card} idx={idx} />
                         </div>
                     ))}
