@@ -1,13 +1,13 @@
-const staticPaths = new Set([]);
+const staticPaths = new Set(["/collection-stories/halloween/","/collection-stories/halloween/coloringbookpage.png","/collection-stories/halloween/fonts/FlechaM-Regular.woff","/collection-stories/halloween/fonts/StyreneB-Bold-Web.woff","/collection-stories/halloween/fonts/StyreneB-Regular-Web.woff","/collection-stories/halloween/fonts/signifier-bold.woff2","/collection-stories/halloween/fonts/signifier-regular.woff2","/collection-stories/halloween/halloween-costumes.gif","/collection-stories/halloween/halloween-slideshow.gif","/collection-stories/halloween/manifest.json","/collection-stories/halloween/newberry.png","/collection-stories/halloween/q-manifest.json","/collection-stories/halloween/robots.txt","/collection-stories/halloween/service-worker.js","/collection-stories/halloween/sitemap.xml","/collection-stories/halloween/spooky.gif","/collection-stories/halloween/spookyshlflibrary.png"]);
 function isStaticPath(method, url) {
   if (method.toUpperCase() !== 'GET') {
     return false;
   }
   const p = url.pathname;
-  if (p.startsWith("/build/")) {
+  if (p.startsWith("/collection-stories/halloween/build/")) {
     return true;
   }
-  if (p.startsWith("/assets/")) {
+  if (p.startsWith("/collection-stories/halloween/assets/")) {
     return true;
   }
   if (staticPaths.has(p)) {

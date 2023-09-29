@@ -1,4 +1,5 @@
 import { component$ } from "@builder.io/qwik";
+import { basePathname } from "@qwik-city-plan";
 import { css } from "~/styled-system/css";
 
 type Image = {
@@ -111,7 +112,7 @@ export const Card = component$<CardProps>((props) => {
                 <img
                     src={
                         image[0].altfn
-                            ? "/" + image[0].altfn
+                            ? basePathname + image[0].altfn
                             : `https://collections.newberry.org/IIIF3/Image/${image[0].ctxid}/full/,400/0/default.jpg`
                     }
                     width={
@@ -132,7 +133,7 @@ export const Card = component$<CardProps>((props) => {
                 />
                 <div class="text-section">
                     <h2 class={h2color}>{title}</h2>
-                    <p>{blurb}</p>
+                    <p dangerouslySetInnerHTML={blurb} />
                     <div class="btn-group">
                         <a href={view} target="_blank">
                             View{" "}

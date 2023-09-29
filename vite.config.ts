@@ -6,6 +6,7 @@ import { macroPlugin } from "@builder.io/vite-plugin-macro";
 
 export default defineConfig(() => {
   return {
+        base: '/collection-stories/halloween',
     plugins: [
       macroPlugin({ preset: "pandacss" }),
       qwikCity(),
