@@ -161,10 +161,10 @@ body * {
 /* ELEVATIONS */
 
 /* .background .scary { */
-.scary {
-    z-index: 0;
-}
-.card-wrapper {
+/* .scary { */
+/*     z-index: 0; */
+/* } */
+.tint {
     /* orange tint */
     z-index: 10;
 }
@@ -182,4 +182,7 @@ body * {
 /* } */
 .card {
     z-index: 50;
+}
+.arrow-wrapper {
+    z-index: 60;
 }

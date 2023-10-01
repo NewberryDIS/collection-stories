@@ -8,11 +8,17 @@ export const Arrow = component$(() => {
             class={css({
                 // position: "absolute",
                 // bottom: "30px",
+                pointerEvents: "auto",
                 width: "100px",
                 animation: "bounce",
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
+                transition: "200ms",
+                // border: "10px solid transparent",
+                "&:hover": {
+                    border: "10px solid rgb(var(--flame))",
+                },
             })}
         >
             <svg fill="rgba(var(--flame))" viewBox="0 0 24 24">

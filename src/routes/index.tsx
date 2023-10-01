@@ -110,18 +110,15 @@ export default component$(() => {
                     width: "100%",
                     display: "flex",
                     justifyContent: "center",
+                    position: "relative",
+                    pointerEvents: "none",
                 },
                 "& .card-wrapper": {
                     gridArea: "1 / 1 / 2 / 2",
                     paddingBlock: "77vh",
-
-                    background:
-                        "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(241,97,81,1) 85%, rgba(241,97,81,1) 100%)",
                 },
                 "& .col": {
                     margin: "30px",
-                    // position: "sticky",
-                    // top: "15px",
                 },
             })}
         >
@@ -129,6 +126,7 @@ export default component$(() => {
             <Left />
             <Right>
                 <div class="card-wrapper">
+                    {/* ghost has to be inside card-wrapper for the z-index layering to work */}
                     <div class="arrow-wrapper">
                         <Arrow />
                     </div>

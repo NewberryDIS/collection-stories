@@ -9,7 +9,7 @@ export const Ghost = component$(() => {
                 css({
                     pointerEvents: "none",
                     // width: "100%",
-                    height: "300px",
+                    height: "200px",
                     position: "fixed",
                     top: "200px",
                     right: 0,
@@ -17,7 +17,7 @@ export const Ghost = component$(() => {
                     "& .ghoo": {
                         position: "relative",
                         // left: "50%",
-                        animation: "ghosty 10s infinite",
+                        animation: "ghoosty 10s infinite",
                         "& img": {
                             position: "relative",
                             height: "200px",

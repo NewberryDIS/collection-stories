@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { css } from "~/styled-system/css";
-import ScaryNewberry from "~/media/spookynewberry-cropped.png?jsx";
-import SpookyNewberry from "~/media/spookylibrary.png?jsx";
+import ScaryNewberry from "~/media/scarynewberry-cropped-overlay.jpg?jsx";
+import SpookyNewberry from "~/media/spookynewberry.png?jsx";
 
 export const Background = component$(() => {
     return (
@@ -14,25 +14,25 @@ export const Background = component$(() => {
                     flexDirection: "column",
                     justifyContent: "space-between",
                     alignItems: "stretch",
-                    backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.87), rgba(0,0,0,0.37)))`,
-                    // `linear-gradient(to bottom, rgba(0,0,0,0.87), rgba(0,0,0,0.37)),  url("${ScaryNewberry}")`,
-                    // 'linear-gradient(to bottom, rgba(0,0,0,0.87), rgba(0,0,0,0.37)), image-set( url("https://collections.newberry.org/IIIF3/Image/2KXJ8Z3DGL97/square/400,/0/default.jpg") 1x, url("https://collections.newberry.org/IIIF3/Image/2KXJ8Z3DGL97/square/800,/0/default.jpg" ) 2x, url("https://collections.newberry.org/IIIF3/Image/2KXJ8Z3DGL97/square/1200,/0/default.jpg") 4x, url("https://collections.newberry.org/IIIF3/Image/2KXJ8Z3DGL97/square/max/0/default.jpg") 10x)',
-                    backgroundSize: "cover",
-                    backgroundAttachment: "fixed",
-                    backgroundPosition: "bottom",
+                    // backgroundImage: `linear-gradyyient(to bottom, rgba(0,0,0,0.87), rgba(0,0,0,0.37))`,
+                    "& .tint": {
+                        flex: 1,
+                        background:
+                            "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(241,97,81,1) 85%, rgba(241,97,81,1) 100%)",
+                    },
                     "& .spooky": {
                         display: "flex",
                         flexDirection: "column",
                         justifyContent: "flex-end",
                         alignItems: "flex-start",
+                        background: "rgba(241,97,81,1)",
                         "& img": {
                             width: "100%",
                         },
                     },
                     "& .scary": {
-                        position: "sticky",
+                        position: "fixed",
                         top: 0,
-                        // flex: "1 1 auto",
                         "& img": {
                             position: "relative",
                             width: "100%",
@@ -51,6 +51,9 @@ export const Background = component$(() => {
         >
             <div class="scary">
                 <ScaryNewberry />
+            </div>
+            <div class="tint">
+                <span></span>
             </div>
             <div class="spooky">
                 <SpookyNewberry />

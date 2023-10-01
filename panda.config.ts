@@ -26,6 +26,15 @@ export default defineConfig({
                     "90%": { top: "0%" },
                     "100%": { left: "110%" },
                 },
+                ghoosty: {
+                    "0%":  {top: "0%", left: "-200px", opacity: "0.01"},
+                    "20%": {top: "100%"},
+                    "30%": {opacity: "0.37"},
+                    "50%": {top: "0%"},
+                    "70%": {opacity: "0.1"},
+                    "80%": {top: "100%"},
+                    "100%":{top: "0%", left: "110%", opacity: "0.5"},
+                }
             },
         },
     },
