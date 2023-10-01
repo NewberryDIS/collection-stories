@@ -27,39 +27,31 @@
     }
     @keyframes ghosty {
         0% {
-            left: -100px;
-            top: 0
+            left: -200px;
+            top: 0%;
+            opacity: 0.01
         }
         15% {
-            left: 15%;
-            top: 100px
+            opacity: 0.50
         }
-        22% {
-            left: 22%;
-            top: 0px
+        20% {
+            top: 33%
         }
-        37% {
-            left: 37%;
-            top: 75px
+        40% {
+            opacity: 0.1
         }
-        42% {
-            left: 42%;
-            top: 111px
+        55% {
+            top: 100%;
+            opacity: 0.8
         }
-        69% {
-            left: 69%;
-            top: 0px
+        80% {
+            opacity: 0.50
         }
-        77% {
-            left: 77%;
-            top: 100px
-        }
-        86% {
-            left: 86%;
-            top: 0px
+        90% {
+            top: 0%
         }
         100% {
-            left: 100%
+            left: 110%
         }
     }
     @keyframes smoothGhost {

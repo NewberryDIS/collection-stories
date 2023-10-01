@@ -26,7 +26,8 @@ export const Card = component$<CardProps>((props) => {
     return (
         <div
             class={css({
-                position: "sticky",
+                // position: "sticky",
+                position: "relative",
                 top: "10px",
                 display: "flex",
                 // flexDirection: "column",
@@ -34,7 +35,8 @@ export const Card = component$<CardProps>((props) => {
                 justifyContent: "center",
                 flexWrap: "wrap",
                 gap: "32px",
-                "& .container": {
+                "& .card": {
+                    position: "relative",
                     alignSelf: "flex-start",
                     backdropFilter: "blur(16px) saturate(180%)",
                     backgroundColor: "rgba(17, 25, 40, 0.25)",
@@ -51,6 +53,7 @@ export const Card = component$<CardProps>((props) => {
                     maxWidth: "464px",
                 },
                 "& img": {
+                    // position: "relative",
                     margin: "auto",
                 },
                 "& h2": {
@@ -108,7 +111,7 @@ export const Card = component$<CardProps>((props) => {
                 },
             })}
         >
-            <div class="container">
+            <div class="card">
                 <img
                     src={
                         image[0].altfn

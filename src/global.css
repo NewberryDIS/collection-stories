@@ -18,9 +18,9 @@ html {
     tab-size: 4;
 }
 
-*, html {
-
-scroll-behavior: smooth !important;
+*,
+html {
+    scroll-behavior: smooth !important;
 }
 body {
     padding: 0;
@@ -156,4 +156,29 @@ b {
 }
 body * {
     box-sizing: border-box;
+}
+
+/* ELEVATIONS */
+
+.background .scary {
+    z-index: 0;
+}
+.card-wrapper {
+    /* orange tint */
+    /* z-index: 10; */
+}
+.background .spooky {
+    z-index: 20;
+}
+.left {
+    z-index: 30;
+}
+.ghost {
+    z-index: 40;
+}
+/* .ghost img { */
+/*     z-index: 40; */
+/* } */
+.card {
+    z-index: 50;
 }
