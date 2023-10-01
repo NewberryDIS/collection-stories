@@ -3,7 +3,6 @@ import type { DocumentHead } from "@builder.io/qwik-city";
 import { Card } from "~/components/Card/card";
 import { css } from "~/styled-system/css";
 import { Arrow } from "~/components/Arrow/arrow";
-import { basePathname } from "@qwik-city-plan";
 import { Ghost } from "~/components/Ghost/ghost";
 import { Left } from "~/components/Left/left";
 import { Right } from "~/components/Right/right";

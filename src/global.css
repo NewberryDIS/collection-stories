@@ -160,14 +160,15 @@ body * {
 
 /* ELEVATIONS */
 
-.background .scary {
+/* .background .scary { */
+.scary {
     z-index: 0;
 }
 .card-wrapper {
     /* orange tint */
-    /* z-index: 10; */
+    z-index: 10;
 }
-.background .spooky {
+.spooky {
     z-index: 20;
 }
 .left {
