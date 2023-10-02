@@ -33,9 +33,14 @@ export const Background = component$(() => {
                     "& .scary": {
                         position: "fixed",
                         top: 0,
+                        width: "100%",
+                        lg: { 
+                            width: "80%"
+                        },
                         "& img": {
                             position: "relative",
                             width: "100%",
+                            // objectPosition: "80% 50%",
                             objectFit: "cover",
                             height: "100vh",
                         },

@@ -70,12 +70,10 @@ export const Left = component$(() => {
             </div>
             <h1>
                 A Very
-                <br />
                 Newberry
-                <br />
                 Halloween
             </h1>
-            <div class="text-content">
+            <div class={css({height: "auto", overflow: "auto"}) + " text-content"}>
                 <p>
                     The Newberry Library, like any building from the 1800s that
                     is full of books, is haunted. Can’t come to Chicago to

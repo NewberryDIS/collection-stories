@@ -20,7 +20,7 @@ const cards = [
         title: "Halloween postcards, ca. 1910s",
         blurb: "Send e-greetings with vintage Halloween images from our collections! Treat a friend with digitized witches, ghosts, and clowns -- just copy & paste into a text, email, or social media message.",
         view: "https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA45P1L0W&SMLS=1&RW=1280&RH=603#/DamView&VBID=2KXJA45P1T3R&PN=1&WS=SearchResults ",
-        about: "https://www.tumblr.com/digitalnewberry/729544430790541312/vintage-halloween-postcards",
+        about: "https://www.tumblr.com/digitalnewberry/730081438520705024/vintage-halloween-postcards?source=share",
     },
     {
         image: [
@@ -74,7 +74,7 @@ const cards = [
         title: "Modern manuscripts, 1890s-1940s",
         blurb: '"It isn’t natural to us to frisk" at the Halloween party? Explore how 20th century people celebrated and spoke about Halloween with our modern manuscripts.',
         view: "https://collections.newberry.org/Share/3ebdn80fysljic8218hdcpkq3pt233s8",
-        about: "https://www.tumblr.com/digitalnewberry/729556292781375488/turn-of-the-century-halloween",
+        about: "https://www.tumblr.com/digitalnewberry/730081464400658432/turn-of-the-century-halloween?source=share",
     },
     {
         image: [{ width: 260, height: 400, ctxid: "2KXJ8ZSU09S1F" }],
