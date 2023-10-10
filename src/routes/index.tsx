@@ -1,4 +1,4 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { Card } from "~/components/Card/card";
 import { css } from "~/styled-system/css";
@@ -66,8 +66,8 @@ const cards = [
 
         title: "Costume ideas",
         blurb: "Find this year’s costume in images from the postcard golden age (1890s-1920s). Fantastical scenes, elaborate sports outfits, and period clothing provide plenty of ideas for your Halloween party.",
-        view: "https://collections.newberry.org/Share/adj2s70b61g1n27eg2hf3u04ikge537f",
-        about: "[grey for now]",
+        view: "https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA4P71SAO&SMLS=1&RW=1920&RH=963#/DamView&VBID=2KXJA4P71UOW&PN=1&WS=AssetManagement",
+        about: "https://www.tumblr.com/digitalnewberry/730804233777135616/with-halloween-just-a-few-short-weeks-away-you?source=share",
     },
     {
         image: [{ width: 327, height: 400, ctxid: "2KXJ8ZSVNXL1T" }],
@@ -90,9 +90,17 @@ const cards = [
         view: "https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA45TDPAC&PN=1&WS=SearchResults#/DamView&VBID=2KXJA45TIQN0&PN=1&WS=SearchResults",
         about: "[grey for now]",
     },
+    {
+        image: [{ width: 267, height: 400, ctxid: "2KXJ8ZS6Z99FF" }],
+        title: "Assorted demons, early to mid-20th c.",
+        blurb: "For all your soul-selling, cake-walking, and golfing needs",
+        view: "https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA4P76K0W&SMLS=1&RW=1920&RH=963#/DamView&VBID=2KXJA4P78LED&PN=1&WS=AssetManagement",
+        about: "[grey for now]",
+    },
 ];
 
 export default component$(() => {
+    const showCitation = useSignal(false);
     return (
         <div
             class={css({
@@ -125,6 +133,77 @@ export default component$(() => {
             <Ghost />
             <Left />
             <Right>
+                <div
+                    class={css({
+                        position: "absolute",
+                        top: "10px",
+                        right: "10px",
+                        zIndex: 100,
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-end",
+                        justifyContent: "flex-start",
+                        gap: "8px",
+                        "& .qmark, .qanswer": {
+                            padding: "0 12px",
+                            margin: 0,
+                            transition: "opacity 250ms",
+                            color: "rgba(var(--bg-color-1))",
+                        },
+                        "& .qmark": {
+                            opacity: 0.7,
+                            height: "46px",
+                            width: "50px",
+                            fontSize: "24px",
+                            backgroundImage: "url('/ghostyboy.png')",
+                            backgroundSize: "contain",
+                            backgroundRepeat: "no-repeat",
+                        },
+                        "& .qanswer": {
+                            background: "rgba(var(--fg-color-1), 1)",
+                            border: "1px solid rgba(var(--fg-color-1), 1)",
+                            // position: "relative",
+                            // top: "33px",
+                            opacity: 0.01,
+                            maxWidth: "200px",
+                        },
+                        "&:hover .qmark": {
+                            opacity: 0.99,
+                        },
+                        "&:hover .qanswer, .show": {
+                            opacity: 0.99,
+                        },
+                        "& em": {
+                            fontStyle: "italic",
+                        },
+                    })}
+                >
+                    <button
+                        onClick$={() =>
+                            (showCitation.value = !showCitation.value)
+                        }
+                        class="qmark"
+                    >
+                        {" "}
+                        ?
+                    </button>
+                    <p
+                        class={`qanswer ${
+                            showCitation.value ? "show" : "noshow"
+                        }`}
+                    >
+                        The spooky background image is the{" "}
+                        <em>Newberry Library, Chicago, 1975</em>.{" "}
+                        <a
+                            href="https://collections.newberry.org/asset-management/2KXJ8Z3DGL97?WS=AssetManagement"
+                            target="_blank"
+                            class="llines"
+                        >
+                            View at the digital collections.{" "}
+                        </a>{" "}
+                        The terrifying ghost is Enzo.
+                    </p>
+                </div>
                 <div class="card-wrapper">
                     {/* ghost has to be inside card-wrapper for the z-index layering to work */}
                     <div class="arrow-wrapper">
