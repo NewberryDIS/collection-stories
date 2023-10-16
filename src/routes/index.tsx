@@ -11,10 +11,10 @@ const cards = [
     {
         image: [
             {
-                width: 616,
+                width: 617,
                 height: 400,
                 ctxid: "2KXGDNLS0NM",
-                altfn: "halloween-slideshow.gif",
+                altfn: "halloween-slideshow.webp",
             },
         ],
         title: "Halloween postcards, ca. 1910s",
@@ -46,7 +46,7 @@ const cards = [
                 width: 641,
                 height: 400,
                 ctxid: "2KXJ8ZS86HE6V",
-                altfn: "coloringbookpage.png",
+                altfn: "coloringbookpage.webp",
             },
         ],
         title: "Color Our Collections: Newberry Halloween 2023",
@@ -60,7 +60,7 @@ const cards = [
                 width: 263,
                 height: 400,
                 ctxid: "2KXJ8ZS86HYCV",
-                altfn: "halloween-costumes.gif",
+                altfn: "halloween-costumes.webp",
             },
         ],
 
@@ -87,8 +87,8 @@ const cards = [
         image: [{ width: 600, height: 400, ctxid: "2KXJ8ZSJ9Q7PB" }],
         title: "WWI skeletons, mid- to late-1910s",
         blurb: "Anti-German propaganda depicting the horrors of war (plus a few post-war fishing trips).",
-        view: "https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA45TDPAC&PN=1&WS=SearchResults#/DamView&VBID=2KXJA45TIQN0&PN=1&WS=SearchResults",
-        about: "[grey for now]",
+        view: "https://collections.newberry.org/asset-management?WS=AssetManagement#/DamView&VBID=2KXJA4P67MOS&PN=1&WS=AssetManagement",
+        about: "https://www.tumblr.com/digitalnewberry/730998690665381889/on-this-day-in-1915-british-nurse-edith-cavell?source=share&ref=_tumblr",
     },
     {
         image: [{ width: 267, height: 400, ctxid: "2KXJ8ZS6Z99FF" }],
@@ -97,6 +97,13 @@ const cards = [
         view: "https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA4P76K0W&SMLS=1&RW=1920&RH=963#/DamView&VBID=2KXJA4P78LED&PN=1&WS=AssetManagement",
         about: "[grey for now]",
     },
+    {
+        image: [{width: 600, height: 400, ctxid: "2KXJ8ZSMLTJHC" , altfn: "autumn.webp"}],
+        title: "Bonus: Happy Autumn",
+        blurb: "It's always peak fall foliage in the Newberry's postcard collections.",
+        view: "https://collections.newberry.org/asset-management?WS=AssetManagement#/DamView&VBID=2KXJA4P6H3VT&PN=1&WS=AssetManagement",
+        about: "[grey for now]",
+    }
 ];
 
 export default component$(() => {
@@ -155,7 +162,7 @@ export default component$(() => {
                             height: "46px",
                             width: "50px",
                             fontSize: "24px",
-                            backgroundImage: "url('/ghostyboy.png')",
+                            backgroundImage: "url('/ghostyboy.webp')",
                             backgroundSize: "contain",
                             backgroundRepeat: "no-repeat",
                         },

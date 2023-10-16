@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { css } from "~/styled-system/css";
-import GhostyBoy from "~/media/ghostyboy.png?jsx";
+import GhostyBoy from "~/media/ghostyboy.webp?jsx";
 
 export const Ghost = component$(() => {
     return (
