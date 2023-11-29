@@ -1,16 +1,10 @@
+/* @import './snow.css' */
 /**
- * PandaCSS CSS layers
- * View the full documentation at https://panda-css.com/docs/concepts/cascade-layers#layer-css
- */
+* PandaCSS CSS layers
+* View the full documentation at https://panda-css.com/docs/concepts/cascade-layers#layer-css
+*/
 @layer reset, base, tokens, recipes, utilities;
 
-/**
- * WHAT IS THIS FILE?
- *
- * Globally applied styles. No matter which components are in the page or matching route,
- * the styles in here will be applied to the Document, without any sort of CSS scoping.
- *
- */
 html {
     -webkit-text-size-adjust: 100%;
     -moz-tab-size: 4;
@@ -55,7 +49,7 @@ html {
     /* --fg-color-2: var(--lavender); */
     /* --fg-color-1: var(--granite); */
 }
-:root {
+.halloween {
     --splash-color: var(--flame);
     --fg-color-1: var(--granite);
     --fg-color-2: var(--mulberry);
@@ -66,14 +60,36 @@ html {
         rgb(var(--bg-color-1)) 0vw,
         40vw,
         rgb(var(--bg-color-2)) 40vw 100vw
-    );
+        );
     --bg-2: linear-gradient(
         60deg,
         rgb(var(--bg-color-2)) 0vw,
         40vw,
         rgb(var(--bg-color-1)) 40vw 100vw
-    );
+        );
     color: rgb(var(--fg-color-1));
+}
+.winter {
+
+    --splash-color: var(--lake);
+    --fg-color-1: var(--granite);
+    --fg-color-2: var(--lake);
+    --bg-color-1: var(--midnight);
+    --bg-color-2: var(--granite);
+    --bg-1: linear-gradient(
+        60deg,
+        rgb(var(--bg-color-1)) 0vw,
+        40vw,
+        rgb(var(--bg-color-2)) 40vw 100vw
+        );
+    --bg-2: linear-gradient(
+        60deg,
+        rgb(var(--bg-color-2)) 0vw,
+        40vw,
+        rgb(var(--bg-color-1)) 40vw 100vw
+        );
+    color: rgb(var(--fg-color-1));
+
 }
 @font-face {
     font-family: "flecha";
@@ -129,14 +145,14 @@ b {
     line-height: 1rem;
     text-decoration: none;
     background: linear-gradient(
-            to right,
-            rgba(var(--fg-color-1), 0.3),
-            rgba(var(--fg-color-1), 0.3)
+        to right,
+        rgba(var(--fg-color-1), 0.3),
+        rgba(var(--fg-color-1), 0.3)
         ),
         linear-gradient(
-            to right,
-            rgba(var(--fg-color-1), 1),
-            rgba(var(--fg-color-1), 1)
+        to right,
+        rgba(var(--fg-color-1), 1),
+        rgba(var(--fg-color-1), 1)
         );
     background-size:
         100% 0.1rem,

@@ -15,13 +15,13 @@ export const Arrow = component$(() => {
                 alignItems: "center",
                 justifyContent: "center",
                 transition: "200ms",
-                // border: "10px solid transparent",
+                border: "0px solid rgb(var(--splash-color))",
                 "&:hover": {
-                    border: "10px solid rgb(var(--flame))",
+                    border: "10px solid rgb(var(--splash-color))",
                 },
             })}
         >
-            <svg fill="rgba(var(--flame))" viewBox="0 0 24 24">
+            <svg fill="rgba(var(--splash-color))" viewBox="0 0 24 24">
                 <g>
                     <path d="m12 18.414-4.707-4.707 1.414-1.414L12 15.586l3.293-3.293 1.414 1.414L12 18.414z" />
                     <path d="M11 6h2v11h-2z" />

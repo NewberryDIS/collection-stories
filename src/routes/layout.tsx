@@ -1,5 +1,6 @@
 import { component$, Slot } from "@builder.io/qwik";
 import type { RequestHandler } from "@builder.io/qwik-city";
+import { css } from "~/styled-system/css";
 
 export const onGet: RequestHandler = async ({ cacheControl }) => {
     // Control caching for this request for best performance and to reduce hosting costs:
@@ -13,5 +14,22 @@ export const onGet: RequestHandler = async ({ cacheControl }) => {
 };
 
 export default component$(() => {
-    return <Slot />;
+    return <div
+            class={css({
+                display: "flex",
+                flexDirection: "column",
+                // overflow: "hidden",
+                height: "100%",
+                lg: {
+                    flexDirection: "row",
+                    height: "100vh",
+                },
+                position: "relative",
+                width: "100%",
+                // "& .col": {
+                //     margin: "30px",
+                // },
+            })}>
+        <Slot />;
+    </div>
 });

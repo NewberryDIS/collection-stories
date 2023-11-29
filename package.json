@@ -1,6 +1,6 @@
 {
-  "name": "my-qwik-empty-starter",
-  "description": "App with Routing built-in ready to create your app",
+  "name": "newberry-collection-stories",
+  "description": "A collection of stories from the Newberry Collections",
   "engines": {
     "node": ">=15.0.0"
   },

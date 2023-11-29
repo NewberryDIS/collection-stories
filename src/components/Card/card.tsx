@@ -22,7 +22,7 @@ export interface CardProps {
 
 export const Card = component$<CardProps>((props) => {
     const { image, title, blurb, view, about } = props.data;
-    const h2color = props.idx > 3 ? "midnight" : "flame";
+    const h2color = props.idx > 3 ? "midnight" : "rgb(var(--splash-color))";
     return (
         <div
             class={css({

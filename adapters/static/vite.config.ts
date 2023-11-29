@@ -5,7 +5,8 @@ import baseConfig from "../../vite.config";
 export default extendConfig(baseConfig, () => {
   return {
     build: {
-                base: "/collection-stories/halloween",
+                base: "/_csh",
+                // base: "/collection-stories",
       ssr: true,
       rollupOptions: {
         input: ["@qwik-city-plan"],
