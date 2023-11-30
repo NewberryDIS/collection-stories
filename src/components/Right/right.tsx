@@ -14,6 +14,7 @@ export const Right = component$<RightProps>((props) => {
         props.holiday +
         " " +
         css({
+          background: "rgb(var(--fg-color-2))",
           position: "relative",
           flex: 3,
           width: "100%",
@@ -23,7 +24,7 @@ export const Right = component$<RightProps>((props) => {
           "& .card-wrapper": {
             display: "flex",
             flexDirection: "column",
-            gridArea: "1 / 1 / 2 / 2",
+            // gridArea: "1 / 1 / 2 / 2",
             paddingBlock: "77vh",
             gap: "20px",
           },
