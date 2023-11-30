@@ -24,7 +24,7 @@ export const Right = component$<RightProps>((props) => {
           "& .card-wrapper": {
             display: "flex",
             flexDirection: "column",
-            // gridArea: "1 / 1 / 2 / 2",
+            gridArea: "1 / 1 / 2 / 2",
             paddingBlock: "77vh",
             gap: "20px",
           },
