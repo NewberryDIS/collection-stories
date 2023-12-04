@@ -1,11 +1,11 @@
-import type { RequestEvent } from '@builder.io/qwik-city';
+import type { RequestEvent } from "@builder.io/qwik-city";
 // import { checkAuthorization } from '../auth'; // Your authorization code
 // import type { DashboardData } from '../types'; // Your types
- 
-export const onGet = async ({ redirect }: RequestEvent) => {
-    throw redirect(307, '/_csh/winter');
-};
 
+export const onGet = async ({ redirect }: RequestEvent) => {
+  console.log("Redirecting to winter...");
+  throw redirect(307, "/_csh/winter");
+};
 
 // import { component$ } from "@builder.io/qwik";
 // import type { DocumentHead } from "@builder.io/qwik-city";

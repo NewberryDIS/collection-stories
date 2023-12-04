@@ -1,0 +1,33 @@
+
+// Get the snowflake and container elements
+const snowflake = document.querySelector(".snowflake");
+const container = document.getElementById("snowflake-container");
+
+// Update the snowflake position based on scroll
+function updateSnowflakePosition() {
+    const scrollPosition = window.scrollY;
+    snowflake.style.transform = `translate(-50%, ${scrollPosition * 0.5}px)`;
+}
+
+// Listen for scroll events and update the snowflake position
+window.addEventListener("scroll", updateSnowflakePosition);
+
+// Initial update on page load
+updateSnowflakePosition();
+-----------------------------------------------------
+useVisibleTask$(async (taskCtx) => {
+  const onScroll = $(() => {
+    // Access scroll position here
+    console.log(window.scrollY);
+  });
+
+  window.addEventListener('scroll', onScroll);
+
+  taskCtx.onCleanup(() => {
+    window.removeEventListener('scroll', onScroll);
+  });
+});
+-----------------------------------------------------
+const onScroll$ = implicit$FirstArg(onScrollQrl);
+ 
+onScroll$(() => alert('scroll'));

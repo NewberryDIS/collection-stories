@@ -94,6 +94,16 @@ html {
   src: url("/fonts/FlechaM-Regular.woff");
 }
 @font-face {
+  font-family: "flecha";
+  src: url("/fonts/FlechaM-Bold.woff");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "flecha";
+  src: url("/fonts/FlechaM-Black.woff");
+  font-weight: 900;
+}
+@font-face {
   font-family: "styrene";
   src: url("/fonts/StyreneB-Regular-Web.woff");
 }
