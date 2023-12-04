@@ -9,7 +9,7 @@ type Image = {
     ctxid?: string;
 };
 type Data = {
-    image: Image[];
+    image: Image;
     title: string;
     blurb: string;
     view: string;
@@ -114,23 +114,23 @@ export const Card = component$<CardProps>((props) => {
             <div class="card">
                 <img
                     src={
-                        image[0].altfn
-                            ? basePathname + image[0].altfn
-                            : `https://collections.newberry.org/IIIF3/Image/${image[0].ctxid}/full/,400/0/default.jpg`
+                        image.altfn
+                            ? basePathname + image.altfn
+                            : `https://collections.newberry.org/IIIF3/Image/${image.ctxid}/full/,400/0/default.jpg`
                     }
                     width={
-                        image[0].height === 400
-                            ? image[0].width
+                        image.height === 400
+                            ? image.width
                             : Math.round(
-                                  (image[0].width / image[0].height) * 400,
+                                  (image.width / image.height) * 400,
                               )
                     }
                     height="400"
                     style={`width: ${
-                        image[0].height === 400
-                            ? image[0].width
+                        image.height === 400
+                            ? image.width
                             : Math.round(
-                                  (image[0].width / image[0].height) * 400,
+                                  (image.width / image.height) * 400,
                               )
                     }px`}
                 />
