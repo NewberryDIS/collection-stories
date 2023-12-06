@@ -30,7 +30,7 @@ export const Background = component$<BackgroundProps>((props) => {
     <div
       class={
         props.holiday +
-        " background-effect " +
+        " " +
         css({
           // position: "fixed",
           overflow: "hidden",
@@ -50,7 +50,7 @@ export const Background = component$<BackgroundProps>((props) => {
           },
           "&.winter .tint": {
             minHeight: "100vh",
-            position: "fixed",
+            // position: "fixed",
           },
           //     "&.halloween .tint": {
           //             "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(241,97,81,1) 85%, rgba(241,97,81,1) 100%)",
@@ -99,7 +99,7 @@ export const Background = component$<BackgroundProps>((props) => {
           ""
         )}
       </div>
-      <div class="tint">
+      <div class="tint"><span></span>
         {props.holiday === "winter" ? (
           Array.from({ length: 200 }).map((_, i) => (
             <div key={i} class="snow">
@@ -114,7 +114,7 @@ export const Background = component$<BackgroundProps>((props) => {
         {props.holiday === "halloween" ? (
           <SpookyNewberry />
         ) : props.holiday === "winter" ? (
-          ""
+          <div>lil guy</div>
         ) : (
           ""
         )}

@@ -14,7 +14,11 @@ export const Right = component$<RightProps>((props) => {
         props.holiday +
         " " +
         css({
-          background: "rgb(var(--fg-color-2))",
+          // background: "rgb(var(--fg-color-2))",
+          // backgroundImage: "url(/wintrynewberry.png)",
+          //               backgroundPosition: "66%",
+          //               backgroundAttachment: "fixed",
+          //               backgroundSize: "100vw 100vh",
           position: "relative",
           flex: 3,
           width: "100%",
@@ -23,6 +27,8 @@ export const Right = component$<RightProps>((props) => {
           height: "100%",
           display: "grid",
           "& .card-wrapper": {
+          background:
+              "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(var(--bg-color-2),1) 85%, rgba(var(--bg-color-2),1) 100%)",
             display: "flex",
             flexDirection: "column",
             gridArea: "1 / 1 / 2 / 2",
@@ -35,7 +41,6 @@ export const Right = component$<RightProps>((props) => {
       <Background holiday={props.holiday} />
 
       <div class="card-wrapper">
-        {/* ghost has to be inside card-wrapper for the z-index layering to work */}
         <div
           class={css({
             // width: "100%",

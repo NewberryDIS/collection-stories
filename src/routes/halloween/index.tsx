@@ -114,7 +114,7 @@ const cards = [
 export default component$(() => {
   return (
     <>
-      <Ghost />
+      <Ghost  holiday="halloween" />
       <Left holiday="halloween">
         <h1 q:slot="title">A Very Newberry Halloween</h1>
         <p>

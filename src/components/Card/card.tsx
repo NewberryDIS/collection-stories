@@ -21,7 +21,8 @@ export interface CardProps {
 }
 
 export const Card = component$<CardProps>((props) => {
-  const { image, title, blurb, view, about } = props.data;
+  const { image, title, blurb, about } = props.data;
+    const view = props.data.view.startsWith('http') ? props.data.view : 'https://collections.newberry.org/' + props.data.view
   const h2color = props.idx > 3 ? "midnight" : "rgb(var(--splash-color))";
   return (
     <div
