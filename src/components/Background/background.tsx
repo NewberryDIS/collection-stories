@@ -4,7 +4,23 @@ import ScaryNewberry from "~/media/scarynewberry-cropped-overlay.jpg?jsx";
 import SpookyNewberry from "~/media/spookynewberry.png?jsx";
 // import ChillyNewberry from "~/media/scarynewberry-cropped.png?jsx";
 
+import Snowflake1 from "~/media/snow/winter-bg-snowflakes-1.png?jsx";
+import Snowflake2 from "~/media/snow/winter-bg-snowflakes-2.png?jsx";
+import Snowflake3 from "~/media/snow/winter-bg-snowflakes-3.png?jsx";
+import Snowflake4 from "~/media/snow/winter-bg-snowflakes-4.png?jsx";
+import Snowflake5 from "~/media/snow/winter-bg-snowflakes-5.png?jsx";
+import Snowflake6 from "~/media/snow/winter-bg-snowflakes-6.png?jsx";
+
+const snowflakes = [
+  <Snowflake1 key="flake1" />,
+  <Snowflake2 key="flake2" />,
+  <Snowflake3 key="flake3" />,
+  <Snowflake4 key="flake4" />,
+  <Snowflake5 key="flake5" />,
+  <Snowflake6 key="flake6" />,
+];
 import Wintry from "~/media/wintry.png?jsx";
+// import { Snowflake } from "../Snowflake/snowflake";
 
 export interface BackgroundProps {
   holiday: string;
@@ -14,9 +30,10 @@ export const Background = component$<BackgroundProps>((props) => {
     <div
       class={
         props.holiday +
-        " " +
+        " background-effect " +
         css({
           // position: "fixed",
+          overflow: "hidden",
           pointerEvents: "none",
           zIndex: 0,
           gridArea: "1 / 1 / 2 / 2",
@@ -85,7 +102,9 @@ export const Background = component$<BackgroundProps>((props) => {
       <div class="tint">
         {props.holiday === "winter" ? (
           Array.from({ length: 200 }).map((_, i) => (
-            <div key={i} class="snow" />
+            <div key={i} class="snow">
+              {snowflakes[(i % 6) + 1]}
+            </div>
           ))
         ) : (
           <span></span>

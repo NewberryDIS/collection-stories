@@ -50,9 +50,18 @@ export const useCortexData = routeLoader$(async (requestEvent) => {
     about: urlParser(res.APIResponse["new.Link-2"]),
     iiiftype: res.APIResponse.Content[0]["CoreField.IIIFResourceType"],
   }));
-
+  // console.log(JSON.stringify(cardData.map((c) => ({ title: c.title }))));
   return cardData;
 });
+
+// jen's preferred order
+// {"title":"Winter postcards, early 20th c."},
+// {"title":"Arctic exploration, 1820s-1880s"},
+// {"title":"A 1598 map with... Santa?"},
+// {"title":"Holiday haul, circa 19th c."},
+// {"title":"New Year postcards, early 20th c."},
+// {"title":"New Yeeres calligraphy book, 1606"},
+// {"title":"New Year diaries & letters, 1800s-1980s"}]
 
 // const cards = [
 //   {
@@ -76,10 +85,26 @@ export default component$(() => {
     <>
       <Left holiday="winter">
         <h1 q:slot="title">Newberry Winter Fest</h1>
-        <p>ok hi</p>
         <p>
-          "Featuring all your favorite wintertime activities -- from ice skating
-          to single-engine piloting to gathering mushrooms & champagne",
+          As Chicago winter descends on the Newberry Library, we’re embracing
+          this season with warm beverages and holiday lights. What better
+          companion for cozy evenings at home than a peek into a frosty past?
+          Here you can browse selections from{" "}
+          <a href="https://collections.newberry.org/" class="llines">
+            Newberry Digital Collections
+          </a>{" "}
+          with centuries of letters, postcards, and art about the holiday
+          season.
+        </p>
+        <p>
+          Read Christmas cards from Ernest Hemingway, explore the evolution of
+          the depiction of Santa, and learn how to say “Happy New Year” in
+          multiple languages with vintage postcards. Explore this page and
+          follow{" "}
+          <a href="https://digitalnewberry.tumblr.com/" class="llines">
+            Digital Newberry on Tumblr
+          </a>{" "}
+          to get all of the latest Winter Fest updates!
         </p>
       </Left>
       <Right holiday="winter">

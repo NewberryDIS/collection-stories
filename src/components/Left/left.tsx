@@ -142,15 +142,9 @@ export const Left = component$<LeftProps>((props) => {
             fontFamily: "styrene",
             fontSize: "14px",
             lineHeight: "14px",
-            _firstOfType: {
-              borderRight: "2px solid rgba(var(--fg-color-1), 0.5)",
-            },
           },
         })}
       >
-        <a target="_blank" href="https://www.newberry.org">
-          The Newberry
-        </a>
         <a target="_blank" href="https://www.newberry.org/contact-librarian">
           Contact Us
         </a>

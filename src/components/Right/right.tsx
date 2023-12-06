@@ -18,7 +18,8 @@ export const Right = component$<RightProps>((props) => {
           position: "relative",
           flex: 3,
           width: "100%",
-          overflow: "auto",
+          overflowY: "auto",
+          overflowX: "hidden",
           height: "100%",
           display: "grid",
           "& .card-wrapper": {
@@ -37,7 +38,7 @@ export const Right = component$<RightProps>((props) => {
         {/* ghost has to be inside card-wrapper for the z-index layering to work */}
         <div
           class={css({
-            width: "100%",
+            // width: "100%",
             display: "flex",
             justifyContent: "center",
             position: "relative",
