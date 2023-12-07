@@ -21,9 +21,9 @@ export const Right = component$<RightProps>((props) => {
           //               backgroundSize: "100vw 100vh",
           position: "relative",
           flex: 3,
-          width: "100%",
-          overflowY: "auto",
-          overflowX: "hidden",
+          padding: 0,
+          overflow: "visible",
+          // width: "100%",
           height: "100%",
           display: "grid",
           "& .card-wrapper": {
@@ -32,14 +32,21 @@ export const Right = component$<RightProps>((props) => {
             display: "flex",
             flexDirection: "column",
             gridArea: "1 / 1 / 2 / 2",
-            paddingBlock: "77vh",
+            paddingBlock: "7vh",
+            lg: { paddingBlock: "77vh" },
             gap: "20px",
           },
+          // "& .wrapper": {
+          //   position: "relative",
+          //   display: "grid",
+          //   overflowY: "auto",
+          //   overflowX: "hidden",
+          // },
         })
       }
     >
       <Background holiday={props.holiday} />
-
+      {/* <div class="wrapper"> */}
       <div class="card-wrapper">
         <div
           class={css({
@@ -54,6 +61,7 @@ export const Right = component$<RightProps>((props) => {
         </div>
         <Slot />
       </div>
+      {/* </div> */}
     </div>
   );
 });

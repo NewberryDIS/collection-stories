@@ -22,7 +22,9 @@ export const Ghost = component$<GhostProps>(({ holiday }) => {
           // position: "fixed",
           right: 0,
           left: 0,
-
+          "& .ghoo, .ball img": {
+            transform: "translateZ(0)",
+          },
           // "& button": {
           //   pointerEvents: "all",
           //   position: "fixed",

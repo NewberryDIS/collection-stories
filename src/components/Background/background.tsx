@@ -44,17 +44,11 @@ export const Background = component$<BackgroundProps>((props) => {
           alignItems: "stretch",
           // backgroundImage: `linear-gradient(to bottom, rgba(0,0,0,0.87), rgba(0,0,0,0.37))`,
           "& .tint": {
+            width: "100%",
             flex: 1,
             background:
               "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(var(--bg-color-2),1) 85%, rgba(var(--bg-color-2),1) 100%)",
           },
-          "&.winter .tint": {
-            minHeight: "100vh",
-            // position: "fixed",
-          },
-          //     "&.halloween .tint": {
-          //             "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(241,97,81,1) 85%, rgba(241,97,81,1) 100%)",
-          //     },
           "& .spooky": {
             display: "flex",
             flexDirection: "column",
@@ -86,6 +80,30 @@ export const Background = component$<BackgroundProps>((props) => {
             margin: 0,
             objectPosition: "center",
           },
+          "& .sno-1, .sno-2, .sno-3": {
+            display: "none",
+          },
+          md: {
+            "& .sno-1": {
+              display: "block",
+            },
+            "& .sno-2, .sno-3": {
+              display: "none",
+            },
+          },
+          lg: {
+            "& .sno-1, .sno-2": {
+              display: "block",
+            },
+            "& .sno-3": {
+              display: "none",
+            },
+          },
+          xl: {
+            "& .sno-1, .sno-2, .sno-3": {
+              display: "block",
+            },
+          },
         }) +
         " background"
       }
@@ -103,7 +121,7 @@ export const Background = component$<BackgroundProps>((props) => {
         <span></span>
         {props.holiday === "winter" ? (
           Array.from({ length: 200 }).map((_, i) => (
-            <div key={i} class="snow">
+            <div key={i} class={`snow sno-${Math.floor(i / 50)}`}>
               {snowflakes[(i % 6) + 1]}
             </div>
           ))

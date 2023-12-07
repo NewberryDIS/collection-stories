@@ -24,8 +24,8 @@ export const Left = component$<LeftProps>((props) => {
           flex: 0,
           display: "flex",
           flexDirection: "column",
-          // position: "relative",
-          position: "absolute",
+          position: "relative",
+          // position: "absolute",
           right: 0,
           top: 0,
           left: 0,
@@ -33,7 +33,8 @@ export const Left = component$<LeftProps>((props) => {
             flexDirection: "row",
           },
           lg: {
-            position: "relative",
+            position: "sticky",
+            top: 0,
             padding: "0 0 24px 0",
             flexDirection: "column",
             flex: 1,
@@ -88,10 +89,10 @@ export const Left = component$<LeftProps>((props) => {
             height="55.578121"
             viewBox="0 0 263.54107 55.578121"
           >
-            <a href="https://newberry.org/" target="_blank">
+            <a href="https://www.newberry.org/" target="_blank">
               <path
                 id="path231-2"
-                style="fill-opacity:1;stroke-width:0.444444"
+                style="fill-opacity:1;stroke-width:0.444444; background-color: rgba(0,0,0,0);"
                 d="M 34.415451,0.28531669 27.454514,4.5060197 20.495529,8.7267227 20.272873,5.6681287 20.050217,2.6095357 10.161545,8.1896137 0.27287252,13.771645 V 34.81852 55.863437 h 10.00000048 10 V 34.197426 12.531411 l 2.111328,-1.216797 c 1.16086,-0.669449 2.640347,-1.5542383 3.28711,-1.9648443 1.155696,-0.733711 1.233214,-0.710808 4.554687,1.3593753 l 3.380859,2.107422 v 21.523438 21.523432 l 8.111328,-0.0195 8.109376,-0.0215 4.445312,-4.19142 4.445312,-4.19336 -2.550781,-0.008 -2.550781,-0.01 L 53.499435,29.999731 53.384201,12.579809 43.899826,6.4313707 Z"
               />
             </a>

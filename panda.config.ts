@@ -41,6 +41,14 @@ export default defineConfig({
             opacity: 0.99,
           },
         },
+        snowfall: {
+          "50": {
+            transform: "translate(var(--mid-x), var(--mid-y))",
+          },
+          "100%": {
+            transform: "translate(var(--end-x), 100vh)",
+          },
+        },
         ghoosty: {
           "0%": { top: "0%", left: "-200px", opacity: "0.01" },
           "20%": { top: "100%" },

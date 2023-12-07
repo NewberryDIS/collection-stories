@@ -16,20 +16,21 @@ export default component$(() => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
-        alignItems: "space-between",
+        alignItems: "start",
         margin: 0,
         padding: 0,
         // overflow: "hidden",
-        height: "100%",
+        // width: "100vw",
+
         lg: {
           flexDirection: "row",
-          height: "100vh",
+          // height: "100vh",
         },
         position: "relative",
-        width: "100%",
+        // width: "100%",
       })}
     >
-      <Slot />;
+      <Slot />
     </div>
   );
 });

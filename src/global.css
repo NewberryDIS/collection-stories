@@ -14,6 +14,7 @@ html {
 *,
 html {
   scroll-behavior: smooth !important;
+  box-sizing: border-box;
 }
 body {
   padding: 0;
@@ -21,7 +22,6 @@ body {
 }
 html,
 body {
-  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
@@ -181,13 +181,15 @@ b {
 body * {
   box-sizing: border-box;
 }
-
+.halloween {
+  overflow: visible !important;
+}
 /* ELEVATIONS */
 
 /* .background .scary { */
-/* .scary { */
-/*     z-index: 0; */
-/* } */
+.scary {
+  z-index: 0;
+}
 .tint {
   /* orange tint */
   z-index: 10;

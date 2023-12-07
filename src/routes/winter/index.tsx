@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import { Card } from "~/components/Card/card";
-import { Ghost } from "~/components/Ghost/ghost";
+// import { Ghost } from "~/components/Ghost/ghost";
 import { Left } from "~/components/Left/left";
 import { Right } from "~/components/Right/right";
 // import { css } from "~/styled-system/css";
@@ -84,7 +84,7 @@ export default component$(() => {
   const cortexData = useCortexData();
   return (
     <>
-            <Ghost holiday="winter" />
+      {/* <Ghost holiday="winter" /> */}
       <Left holiday="winter">
         <h1 q:slot="title">Newberry Winter Fest</h1>
         <p>
@@ -92,7 +92,11 @@ export default component$(() => {
           this season with warm beverages and holiday lights. What better
           companion for cozy evenings at home than a peek into a frosty past?
           Here you can browse selections from{" "}
-          <a href="https://collections.newberry.org/" class="llines" target="_blank">
+          <a
+            href="https://collections.newberry.org/"
+            class="llines"
+            target="_blank"
+          >
             Newberry Digital Collections
           </a>{" "}
           with centuries of letters, postcards, and art about the holiday
@@ -103,7 +107,11 @@ export default component$(() => {
           the depiction of Santa, and learn how to say “Happy New Year” in
           multiple languages with vintage postcards. Explore this page and
           follow{" "}
-          <a href="https://digitalnewberry.tumblr.com/" class="llines" target="_blank">
+          <a
+            href="https://digitalnewberry.tumblr.com/"
+            class="llines"
+            target="_blank"
+          >
             Digital Newberry on Tumblr
           </a>{" "}
           to get all of the latest Winter Fest updates!
