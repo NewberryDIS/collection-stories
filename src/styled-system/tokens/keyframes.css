@@ -27,50 +27,57 @@
     }
     @keyframes winterghost {
         0% {
-            left: -400px;
-            opacity: 0.01
+            left: -200px;
+            opacity: 0.01;
+            bottom: 333px
+        }
+        10% {
+            left: -200px
         }
         33% {
+            left: 23%;
+            opacity: 0.33
+        }
+        45% {
+            left: 15%;
+            opacity: 0.77
+        }
+        55% {
             left: 40%;
-            opacity: 0.37
+            opacity: 0.99
         }
-        50% {
-            left: 33%
+        80% {
+            bottom: 333px
         }
-        66% {
-            left: 50%;
-            opacity: 0.1
+        90% {
+            bottom: 366px
         }
-        75% {
-            left: 66%
+        85% {
+            bottom: 333px
         }
         100% {
             left: 110%;
-            opacity: 0.5
+            opacity: 0.33
         }
     }
     @keyframes wintersnowball {
         0% {
-            left: -200px;
-            opacity: 0.01
+            transform: rotate(0deg) scale(0.77);
+            left: -150px;
+            opacity: 0.33
         }
         33% {
-            left: 45%;
-            opacity: 0.37
+            transform: rotate(540deg) scale(1);
+            left: 37%
         }
         50% {
-            left: 45%
-        }
-        66% {
-            left: 60%;
-            opacity: 0.1
-        }
-        75% {
-            left: 66%
+            transform: rotate(540deg) scale(1);
+            left: 37%
         }
         100% {
-            left: 110%;
-            opacity: 0.5
+            transform: rotate(3600deg) scale(1.33);
+            left: 150%;
+            opacity: 0.99
         }
     }
     @keyframes ghoosty {

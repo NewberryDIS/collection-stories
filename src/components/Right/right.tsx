@@ -27,7 +27,7 @@ export const Right = component$<RightProps>((props) => {
           height: "100%",
           display: "grid",
           "& .card-wrapper": {
-          background:
+            background:
               "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 60vh, rgba(var(--bg-color-2),1) 85%, rgba(var(--bg-color-2),1) 100%)",
             display: "flex",
             flexDirection: "column",

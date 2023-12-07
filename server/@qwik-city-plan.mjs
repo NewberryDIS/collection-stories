@@ -1,1 +1,1 @@
-import{g as e,n as r,o as l,m as t,r as n,l as o,t as u}from"./assets/@qwik-city-plan-9a60d094.mjs";export{e as basePathname,r as cacheModules,l as default,t as menus,n as routes,o as serverPlugins,u as trailingSlash};
+import{g as e,n as r,o as l,m as t,r as n,l as o,t as u}from"./assets/@qwik-city-plan-4793dd17.mjs";export{e as basePathname,r as cacheModules,l as default,t as menus,n as routes,o as serverPlugins,u as trailingSlash};

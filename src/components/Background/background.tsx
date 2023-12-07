@@ -99,7 +99,8 @@ export const Background = component$<BackgroundProps>((props) => {
           ""
         )}
       </div>
-      <div class="tint"><span></span>
+      <div class="tint">
+        <span></span>
         {props.holiday === "winter" ? (
           Array.from({ length: 200 }).map((_, i) => (
             <div key={i} class="snow">
@@ -114,7 +115,7 @@ export const Background = component$<BackgroundProps>((props) => {
         {props.holiday === "halloween" ? (
           <SpookyNewberry />
         ) : props.holiday === "winter" ? (
-          <div>lil guy</div>
+          <span></span>
         ) : (
           ""
         )}
