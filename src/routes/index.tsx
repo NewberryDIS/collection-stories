@@ -23,7 +23,7 @@ export const usePosts = routeLoader$(async (requestEvent) => {
   let posts = response.posts;
   posts = posts.filter((p: Post) => p.trail[0].blog.name === "digitalnewberry");
   posts = posts
-    .filter((p: Post) => p.tags.indexOf("collection stories" > -1))
+    .filter((p: Post) => p.tags.indexOf("collection stories") > -1)
     .map((p: Post) => {
       const htmlBlock = p.body;
       const h1Match = htmlBlock.match(/<h1>(.*?)<\/h1>/);
@@ -35,7 +35,8 @@ export const usePosts = routeLoader$(async (requestEvent) => {
         title: h1Value as string,
         image: imgSrc,
         url: p.short_url,
-        allData: p,
+        // tags: p.tags,
+        // allData: p,
       };
     });
   // return response;

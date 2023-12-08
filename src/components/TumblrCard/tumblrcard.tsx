@@ -7,6 +7,7 @@ export interface TumblrcardProps {
     title: string;
     image: string;
     url: string;
+    // tags: string[];
   };
   alternate: Signal;
 }
@@ -102,6 +103,7 @@ export const Tumblrcard = component$<TumblrcardProps>((props) => {
     >
       {/* <img src={image} alt="" /> */}
       <div class="liner" style={`background-image: url(${image}); `}></div>
+      {/* <h2>{tags}</h2> */}
       <h2 dangerouslySetInnerHTML={title} />
     </a>
   );
