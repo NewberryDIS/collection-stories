@@ -121,16 +121,17 @@ export default component$(() => {
         <p>
           Read Christmas cards from Ernest Hemingway, explore the evolution of
           the depiction of Santa, and learn how to say “Happy New Year” in
-          multiple languages with vintage postcards. Explore this page and
-          follow{" "}
+          multiple languages with vintage postcards. We'll be sharing more dives
+          into these holiday items throughout the month at{" "}
           <a
             href="https://digitalnewberry.tumblr.com/"
             class="llines"
             target="_blank"
           >
             Digital Newberry on Tumblr
-          </a>{" "}
-          to get all of the latest Winter Fest updates!
+          </a>
+          . Subscribe there or keep an eye on this page to get all of your
+          latest Winter Fest updates!
         </p>
       </Left>
       <Right holiday="winter">

@@ -90,7 +90,7 @@ export const Card = component$<CardProps>((props) => {
           display: "flex",
           alignItems: "center",
           gap: "8px",
-          "& a": {
+          "& a, .disabled": {
             borderRadius: "4px",
             flex: 1,
             fontFamily: "styrene",
@@ -104,9 +104,31 @@ export const Card = component$<CardProps>((props) => {
           },
         },
         "& .disabled": {
-          cursor: "not-allowed",
+          // cursor: "not-allowed",
+          cursor: "default",
           opacity: 0.5,
+          position: "relative",
           background: "rgba(var(--bg-color-1), 0.5)",
+          "&:hover .about-link": {
+            // display: "none",
+            opacity: 0.0001,
+          },
+          "&:hover .coming-soon-link": {
+            // display: "block",
+            opacity: 0.9999,
+          },
+        },
+        "& .coming-soon-link": {
+          position: "absolute",
+          left: 0,
+          top: 0,
+          right: 0,
+          bottom: 0,
+          // display: "none",
+          opacity: 0.0001,
+        },
+        "& .coming-soon-link, .about-link": {
+          transition: "200ms",
         },
         "& .text-section": {
           maxWidth: "100%",
@@ -138,20 +160,27 @@ export const Card = component$<CardProps>((props) => {
               : Math.round((image.width / image.height) * 400)
           }px`}
         />
-        <div class="text-section">
+        <div id="card-title" class="text-section">
           <h2 class={h2color}>{title}</h2>
           <p dangerouslySetInnerHTML={blurb} />
           <div class="btn-group">
-            <a href={view} target="_blank">
+            <a href={view} target="_blank" aria-label={`View the ${title}`}>
               View{" "}
             </a>
-            <a
-              href={about.endsWith("]") ? "#" : about}
-              class={about.endsWith("]") ? "disabled" : ""}
-              target="_blank"
-            >
-              About
-            </a>
+            {about.endsWith("]") ? (
+              <div class="disabled">
+                <span class="about-link">About</span>
+                <span class="coming-soon-link">Coming soon!</span>
+              </div>
+            ) : (
+              <a
+                href={about}
+                aria-label={`More about the ${title}`}
+                target="_blank"
+              >
+                <span class="about-link">About</span>
+              </a>
+            )}
           </div>
         </div>
       </div>

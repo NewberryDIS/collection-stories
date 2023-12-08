@@ -43,10 +43,10 @@ html {
 /*  dm on */
 :root {
   --splash-color: var(--sapphire);
-  --bg-color-1: var(--midnight);
-  --bg-color-2: var(--mulberry);
-  --fg-color-2: var(--lavender);
-  --fg-color-1: var(--granite);
+  --bg-color-1: var(--granite);
+  --bg-color-2: var(--lavender);
+  --fg-color-1: var(--midnight);
+  --fg-color-2: var(--mulberry);
 }
 
 .halloween {

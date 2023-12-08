@@ -14,7 +14,7 @@ export const Right = component$<RightProps>((props) => {
         props.holiday +
         " " +
         css({
-          // background: "rgb(var(--fg-color-2))",
+          background: "rgb(var(--bg-color-2))",
           // backgroundImage: "url(/wintrynewberry.png)",
           //               backgroundPosition: "66%",
           //               backgroundAttachment: "fixed",
