@@ -114,7 +114,7 @@ const cards = [
 export default component$(() => {
   return (
     <>
-      <Ghost  holiday="halloween" />
+      <Ghost holiday="halloween" />
       <Left holiday="halloween">
         <h1 q:slot="title">A Very Newberry Halloween</h1>
         <p>
@@ -149,7 +149,15 @@ export default component$(() => {
         </p>
       </Left>
       <Right holiday="halloween">
-        <Sourcebutton img="ghostyboy.webp" />
+        <Sourcebutton
+          img="ghostyboy.webp"
+          text={[
+            "The spooky background image is the",
+            "Newberry Library, Chicago, 1975.",
+            "The terrifying ghost is Enzo.",
+          ]}
+          url="https://collections.newberry.org/asset-management/2KXJ8Z3DGL97?WS=AssetManagement"
+        />
         {cards.map((card, idx) => (
           <div id={`card-${idx}`} key={idx} class="col">
             <Card data={card} idx={idx} />

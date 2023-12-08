@@ -1,21 +1,19 @@
 import type { RequestEvent } from "@builder.io/qwik-city";
-// import { checkAuthorization } from '../auth'; // Your authorization code
-// import type { DashboardData } from '../types'; // Your types
 
 export const onGet = async ({ redirect }: RequestEvent) => {
   console.log("Redirecting to winter...");
-  throw redirect(307, "/_csh/winter");
+  throw redirect(307, "/collection-stories/winter");
 };
 
 // import { component$ } from "@builder.io/qwik";
 // import type { DocumentHead } from "@builder.io/qwik-city";
 // import { Left } from "~/components/Left/left";
-// // import { Right } from "~/components/Right/right";
+// import { Right } from "~/components/Right/right";
 // import tumblr from "tumblr.js";
 // import { routeLoader$ } from "@builder.io/qwik-city";
 // import { Tumblrcard } from "~/components/TumblrCard/tumblrcard";
 // import type { Post } from "~/tumblrtypes";
-//
+// //
 // import { css } from "~/styled-system/css";
 // export const usePosts = routeLoader$(async (requestEvent) => {
 //   const client = tumblr.createClient({
@@ -83,12 +81,12 @@ export const onGet = async ({ redirect }: RequestEvent) => {
 // });
 //
 // export const head: DocumentHead = {
-//   title: "A Newberry Halloween",
+//   title: "Newberry Collection Stories",
 //   meta: [
 //     {
 //       name: "description",
 //       content:
-//         "A collection of portals to halloween content from the collections of the Newberry Library",
+//         "A collection of portals to content from the collections of the Newberry Library",
 //     },
 //   ],
 // };

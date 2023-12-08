@@ -32,7 +32,7 @@ export const Right = component$<RightProps>((props) => {
             display: "flex",
             flexDirection: "column",
             gridArea: "1 / 1 / 2 / 2",
-            paddingBlock: "7vh",
+            paddingBlock: "7vh 77vh",
             lg: { paddingBlock: "77vh" },
             gap: "20px",
           },

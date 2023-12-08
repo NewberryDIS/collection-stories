@@ -212,3 +212,80 @@ body * {
 .arrow-wrapper {
   z-index: 60;
 }
+.nzo {
+  z-index: 60;
+}
+.nzo {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  border: 0;
+  transition: 200ms;
+}
+.nzo:hover {
+  filter: invert(1);
+  /* filter: hue-rotate(90deg); */
+}
+.nzo.nzo-active {
+  transition: 400ms;
+  /* filter: hue-rotate(90deg); */
+  filter: invert(0.5);
+  /* animation: spin 1s linear infinite; */
+}
+
+.bg-citation {
+  transition: 200ms;
+  opacity: 0.5;
+  position: fixed;
+  width: 200px;
+  padding: 10px;
+  bottom: 10px;
+  right: 10px;
+  font-size: 0.77rem;
+  color: rgba(var(--midnight), 1);
+  background: rgb(var(--granite));
+  border: 1px solid rgb(var(--midnight));
+}
+.bg-citation:hover {
+  opacity: 1;
+}
+.bg-citation span {
+  font-size: 1px;
+  opacity: 0;
+}
+.bg-citation:hover span {
+  opacity: 1;
+  font-size: inherit;
+}
+.rev-llines {
+  color: inherit !important;
+  font-weight: 700;
+  line-height: 1rem;
+  text-decoration: none;
+  background: linear-gradient(
+      to right,
+      rgba(var(--bg-color-1), 0.3),
+      rgba(var(--bg-color-1), 0.3)
+    ),
+    linear-gradient(
+      to right,
+      rgba(var(--bg-color-1), 1),
+      rgba(var(--bg-color-1), 1)
+    );
+  background-size:
+    100% 0.1rem,
+    0 0.1rem;
+  background-position:
+    100% 100%,
+    0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 300ms;
+}
+
+.rev-llines:hover,
+.rev-llines:focus {
+  background-size:
+    0 0.1rem,
+    100% 0.1rem;
+}

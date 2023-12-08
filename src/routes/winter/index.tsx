@@ -1,10 +1,12 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal, $ } from "@builder.io/qwik";
 import type { DocumentHead } from "@builder.io/qwik-city";
 import { routeLoader$ } from "@builder.io/qwik-city";
 import { Card } from "~/components/Card/card";
-// import { Ghost } from "~/components/Ghost/ghost";
+import { Ghost } from "~/components/Ghost/ghost";
 import { Left } from "~/components/Left/left";
 import { Right } from "~/components/Right/right";
+import { Sourcebutton } from "~/components/SourceButton/sourcebutton";
+import Snowflake from "~/media/snow/winter-bg-snowflakes-3.png?jsx";
 // import { css } from "~/styled-system/css";
 import type { CortexData } from "~/types";
 const peUrl = [
@@ -82,9 +84,23 @@ export const useCortexData = routeLoader$(async (requestEvent) => {
 
 export default component$(() => {
   const cortexData = useCortexData();
+  const showZo = useSignal(false);
+  const showNzo = $(() => {
+    showZo.value = true;
+    setTimeout(function () {
+      showZo.value = false;
+      console.log("Value is false");
+    }, 10000);
+  });
   return (
     <>
-      {/* <Ghost holiday="winter" /> */}
+      <button
+        class={`nzo ${showZo.value ? "nzo-active" : ""}`}
+        onClick$={showNzo}
+      >
+        <Snowflake />
+      </button>
+      {showZo.value && <Ghost holiday="winter" />}
       <Left holiday="winter">
         <h1 q:slot="title">Newberry Winter Fest</h1>
         <p>
@@ -127,6 +143,15 @@ export default component$(() => {
           </div>
         ))}
       </Right>
+      <Sourcebutton
+        img="wintry-mini.png"
+        text={[
+          "The frigid background image is",
+          "Elmer Jacobs Christmas card, mid-20th c.",
+          "The snowy ghost is named Enzo. If you haven't found him yet, keep looking!",
+        ]}
+        url="https://collections.newberry.org/asset-management/2KXJ8ZS4WVG4K"
+      />
     </>
   );
 });

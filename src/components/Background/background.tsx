@@ -120,7 +120,9 @@ export const Background = component$<BackgroundProps>((props) => {
       <div class="tint">
         <span></span>
         {props.holiday === "winter" ? (
-          Array.from({ length: 200 }).map((_, i) => (
+          Array.from({ length: 199 }).map((_, i) => (
+            // 200 total, in groups of 50; group 0 is always shown, groups 1,2,3 show depending on screen size
+            // only used 6 of the snowflakes, they didn't seem that different
             <div key={i} class={`snow sno-${Math.floor(i / 50)}`}>
               {snowflakes[(i % 6) + 1]}
             </div>
