@@ -18,36 +18,39 @@ interface Props {
 }
 
 const { image, title, blurb, about, view } = Astro.props.data;
-
+let { data } = Astro.props
 const viewUrl = view.startsWith("http")
   ? view
   : "https://collections.newberry.org/" + view;
 const aboutDisabled = about.endsWith(']')
 ---
+<script define:vars={{data}} >
+console.log(data)
+</script>
 
 <div class="card-wings">
-<div class="card">
-	<img src={image.altfn ?? `https://collections.newberry.org/IIIF3/Image/${image.ctxid}/full/,400/0/default.jpg` }
-	/>
+	<div class="card">
+		<img src={image.altfn || `https://collections.newberry.org/IIIF3/Image/${image.ctxid}/full/,400/0/default.jpg` }
+		/>
 		<!-- width={image.height === 400 ? image.width : Math.round((image.width / image.height) * 400 )} -->
 		<!-- height={400} -->
-	<div class="card-text-section">
-		<h2>{title}</h2>
-		<p set:html={blurb} />
-		<div class="btn-group">
-			<a href={view} target="_blank" aria-label={`View the ${title}`}>View</a>
-			{aboutDisabled ? (
-        <div class="disabled">
-          <span class="about-link">About</span>
-          <span class="coming-soon-link">Coming soon!</span>
-        </div> ) : (
-					<a href={view} target="_blank" aria-label={`Read more about the ${title}`}>
-						<span class="about-link">About</span>
-					</a>
+		<div class="card-text-section">
+			<h2>{title}</h2>
+			<p set:html={blurb} />
+			<div class="btn-group">
+				<a href={view} target="_blank" aria-label={`View the ${title}`}>View</a>
+				{aboutDisabled ? (
+        	<div class="disabled">
+          	<span class="about-link">About</span>
+          	<span class="coming-soon">Coming soon!</span>
+        	</div> ) : (
+						<a href={view} target="_blank" aria-label={`Read more about the ${title}`}>
+							<span class="about-link">About</span>
+						</a>
 				)}
+			</div>
 		</div>
 	</div>
-</div>
 </div>
 
 <style>
@@ -110,6 +113,28 @@ h2 {
 }
 .disabled {
 	cursor: default;
-		opacity: 0.5;
+	opacity: 0.5;
+ 	position: relative;
+  background: rgba(var(--bg-color-1), 0.5);
 }
+.coming-soon {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  // display: "none";
+  opacity: 0.0001;
+}
+.coming-soon, .about-link {
+  transition: 400ms;
+}
+
+.disabled:hover .about-link {
+  opacity: 0.0001;
+}
+.disabled:hover .coming-soon {
+  opacity: 0.9999;
+}
+
 </style>

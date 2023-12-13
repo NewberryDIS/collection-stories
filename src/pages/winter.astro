@@ -3,14 +3,20 @@ import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Left from '../components/Left.astro'
 import Right from '../components/Right.astro'
+import Ghost from '../components/Ghost.astro'
 import SourceButton from '../components/SourceButton.astro'
-// import TumblrCard from '../components/TumblrCard.astro'
-import data from '../demodata-holiday.json'
+import { getData } from '../stores/'
+// import data from '../demodata-holiday.json'
 import '../styles/snow.css'
 import '../styles/animations.css'
+
+const mei = "2KXJ8ZS43VB4Y"
+const data = await getData(mei)
+
 ---
 
 <Layout title="Newberry Winter Fest">
+  <Ghost holiday="winter" />
   <Left holiday="winter">
     <h1 slot="title" >
       Newberry Winter Fest 
@@ -50,7 +56,7 @@ import '../styles/animations.css'
   </Left>
 	<Right holiday="winter">
     <SourceButton 
-      img="wintry-mini.png"
+      img="wintry-mini.webp"
       text={[
         "The frigid background image is",
         "Elmer Jacobs Christmas card, mid-20th c.",
