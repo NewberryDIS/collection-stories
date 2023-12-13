@@ -1,0 +1,33 @@
+/* sm */
+@media screen and (max-width: 768) {
+  .left {
+    flex-direction: column;
+  }
+}
+
+/* med */
+@media screen and (max-width: 1023){
+  .left {
+    height: auto;
+    flex-direction: row;
+    position: relative;
+
+  }
+  .right .card-wrapper {
+    padding-block: 7vh 77vh;
+  }
+}
+
+/* lg */
+@media screen and (min-width: 1024){
+  .left {
+    height: 100vh;
+    flex-direction: column;
+    position: sticky;
+    padding: 0 0 24px 0;
+    flex: 1;
+  }
+  .right .card-wrapper {
+    padding-block: 77vh;
+  }
+}

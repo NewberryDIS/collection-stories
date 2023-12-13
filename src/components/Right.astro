@@ -1,0 +1,53 @@
+---
+import Background from './Background.astro'
+import Arrow from './Arrow.astro'
+interface Props {
+  holiday: string;
+}
+const { holiday } = Astro.props;
+---
+
+<div class={`right ${holiday ?? ""}`}>
+  <Background holiday={holiday} />
+  <div class="right-liner">
+    {holiday && <Arrow />}
+    <div class="card-wrapper" >
+      <slot  />
+    </div>
+  </div>
+</div>
+
+<style>
+.right {
+  background: rgb(var(--bg-color-2));
+  position: relative;
+  flex: 3;
+  padding: 0;
+  overflow: visible;
+  display: grid;
+  /* height: auto; */
+}
+.card-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: relative;
+  gap: 20px;
+
+}
+
+@media screen and (max-width: 1023px){
+  .right.halloween .right-liner,
+  .right.winter    .right-liner {
+    padding-block: 7vh 77vh;
+  }
+}
+
+/* lg */
+@media screen and (min-width: 1024px){
+  .right.halloween .right-liner,
+  .right.winter    .right-liner {
+    padding-block: 77vh;
+  }
+}
+</style>

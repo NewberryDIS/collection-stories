@@ -1,0 +1,233 @@
+---
+import '../styles/elevations.css'
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+	  <main>
+	    <slot />
+		</main>
+	</body>
+</html>
+<style is:global>
+
+main {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+}
+* {
+  scroll-behavior: smooth !important;
+  box-sizing: border-box;
+}
+html,
+body {
+  margin: 0;
+  line-height: inherit;
+  padding: 0;
+}
+html {
+  --flame: 241, 97, 81;
+  --park-green: 32, 84, 62;
+  --tile: 146, 88, 64;
+  --sapphire: 64, 81, 163;
+  --lake: 126, 196, 226;
+  --mulberry: 173, 43, 90;
+  --lavender: 205, 184, 209;
+  --midnight: 17, 26, 42;
+  --granite: 234, 235, 231;
+  --sand: 234, 220, 201;
+  --angle: 70deg;
+  --dist: 66%;
+}
+:root {
+	--accent: 136, 58, 234;
+	--accent-light: 224, 204, 250;
+	--accent-dark: 49, 10, 101;
+	--accent-gradient: linear-gradient(
+		45deg,
+		rgb(var(--accent)),
+		rgb(var(--accent-light)) 30%,
+		white 60%
+	  );
+
+  --splash-color: var(--sapphire);
+  --bg-color-1: var(--granite);
+  --bg-color-2: var(--lavender);
+  --fg-color-1: var(--midnight);
+  --fg-color-2: var(--mulberry);
+}
+
+.halloween {
+  --splash-color: var(--flame);
+  --fg-color-1: var(--granite);
+  --fg-color-2: var(--mulberry);
+  --bg-color-1: var(--midnight);
+  --bg-color-2: var(--flame);
+  --bg-1: linear-gradient(
+    60deg,
+    rgb(var(--bg-color-1)) 0vw,
+    40vw,
+    rgb(var(--bg-color-2)) 40vw 100vw
+    );
+  --bg-2: linear-gradient(
+    60deg,
+    rgb(var(--bg-color-2)) 0vw,
+    40vw,
+    rgb(var(--bg-color-1)) 40vw 100vw
+    );
+  color: rgb(var(--fg-color-1));
+}
+.winter {
+  --splash-color: var(--lake);
+  --fg-color-1: var(--granite);
+  --fg-color-2: var(--lake);
+  --bg-color-1: var(--midnight);
+  --bg-color-2: var(--granite);
+  --bg-1: linear-gradient(
+    60deg,
+    rgb(var(--bg-color-1)) 0vw,
+    40vw,
+    rgb(var(--bg-color-2)) 40vw 100vw
+    );
+  --bg-2: linear-gradient(
+    60deg,
+    rgb(var(--bg-color-2)) 0vw,
+    40vw,
+    rgb(var(--bg-color-1)) 40vw 100vw
+    );
+  color: rgb(var(--fg-color-1));
+}
+@font-face {
+  font-family: "flecha";
+  src: url("/fonts/FlechaM-Regular.woff");
+}
+@font-face {
+  font-family: "flecha";
+  src: url("/fonts/FlechaM-Bold.woff");
+  font-weight: 700;
+}
+@font-face {
+  font-family: "flecha";
+  src: url("/fonts/FlechaM-Black.woff");
+  font-weight: 900;
+}
+@font-face {
+  font-family: "styrene";
+  src: url("/fonts/StyreneB-Regular-Web.woff");
+}
+@font-face {
+  font-family: "styrene-bold";
+  src: url("/fonts/StyreneB-Bold-Web.woff");
+}
+@font-face {
+  font-family: "signifier";
+  src: url("/fonts/signifier-regular.woff2");
+}
+@font-face {
+  font-family: "signifier-bold";
+  src: url("/fonts/signifier-bold.woff2");
+}
+
+h1,
+h2 {
+  font-family: "flecha";
+  color: rgb(var(--splash-color));
+}
+h3,
+h4,
+h5,
+h6,
+dt {
+  font-family: "styrene";
+  color: rgb(var(--brand));
+}
+
+body,
+html {
+  font-family: "signifier";
+  color: rgb(var(--fg-color-1));
+}
+
+b {
+  font-family: "styrene-bold";
+  color: rgb(var(--fg-color-2));
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  font-size: min(10vh, 13vw);
+  line-height: min(10vh, 13vw);
+}
+
+.llines {
+  color: inherit !important;
+  font-weight: 700;
+  line-height: 1rem;
+  text-decoration: none;
+  background: linear-gradient(
+    to right,
+    rgba(var(--fg-color-1), 0.3),
+    rgba(var(--fg-color-1), 0.3)
+    ),
+    linear-gradient(
+    to right,
+    rgba(var(--fg-color-1), 1),
+    rgba(var(--fg-color-1), 1)
+    );
+  background-size:
+    100% 0.1rem,
+    0 0.1rem;
+  background-position:
+    100% 100%,
+    0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 300ms;
+}
+
+.llines:hover,
+.llines:focus {
+  background-size:
+    0 0.1rem,
+    100% 0.1rem;
+}
+/* sm */
+@media screen and (max-width: 768px) {
+}
+
+/* med */
+@media screen and (max-width: 1023px){
+  main {
+
+    flex-direction: column;
+  }
+}
+
+/* lg */
+@media screen and (min-width: 1024px){
+  main {
+    flex-direction: row;
+  }
+}
+
+</style>

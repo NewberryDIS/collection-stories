@@ -1,0 +1,32 @@
+/* ELEVATIONS */
+
+.background-top {
+/* scary */
+  z-index: 0;
+}
+.background-middle {
+/* tint */
+  z-index: 10;
+}
+.background-bottom, .logo {
+/* spooky */
+  z-index: 20;
+}
+.left {
+  z-index: 30;
+}
+.ghost {
+  z-index: 40;
+}
+/* .ghost img { */
+/*     z-index: 40; */
+/* } */
+.card {
+  z-index: 50;
+}
+.arrow-wrapper {
+  z-index: 60;
+}
+.nzo {
+  z-index: 60;
+}

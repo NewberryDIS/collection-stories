@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Left from '../components/Left.astro'
+import Right from '../components/Right.astro'
+import TumblrCard from '../components/TumblrCard.astro'
+import data from '../demodata-tumblr.json'
+---
+
+<Layout title="Newberry Collection Stories">
+  <Left>
+    <h1 slot="title" >
+      The Newberry's Collection Stories
+    </h1>
+    <div class="left-text" slot="left-text" >
+      <p>they good</p>
+    </div>
+  </Left>
+	<Right>
+
+
+    {data.map(d => <TumblrCard data={d} />)}
+	</Right>
+</Layout>
+
+<script is:inline>
+document.documentElement.classList.remove("winter");
+document.documentElement.classList.remove("halloween");
+</script>
+
+<style>
+</style>

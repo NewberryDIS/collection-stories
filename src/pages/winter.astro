@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import Left from '../components/Left.astro'
+import Right from '../components/Right.astro'
+import SourceButton from '../components/SourceButton.astro'
+// import TumblrCard from '../components/TumblrCard.astro'
+import data from '../demodata-holiday.json'
+import '../styles/snow.css'
+import '../styles/animations.css'
+---
+
+<Layout title="Newberry Winter Fest">
+  <Left holiday="winter">
+    <h1 slot="title" >
+      Newberry Winter Fest 
+    </h1>
+    <div class="left-text" slot="left-text" >
+      <p>
+        As Chicago winter descends on the Newberry Library, we’re embracing
+        this season with warm beverages and holiday lights. What better
+        companion for cozy evenings at home than a peek into a frosty past?
+        Here you can browse selections from{" "}
+        <a
+          href="https://collections.newberry.org/"
+          class="llines"
+          target="_blank"
+        >
+          Newberry Digital Collections
+        </a>{" "}
+        with centuries of letters, postcards, and art about the holiday
+        season.
+      </p>
+      <p>
+        Read Christmas cards from Ernest Hemingway, explore the evolution of
+        the depiction of Santa, and learn how to say “Happy New Year” in
+        multiple languages with vintage postcards. We'll be sharing more dives
+        into these holiday items throughout the month at{" "}
+        <a
+          href="https://digitalnewberry.tumblr.com/"
+          class="llines"
+          target="_blank"
+        >
+          Digital Newberry on Tumblr
+        </a>
+        . Subscribe there or keep an eye on this page to get all of your
+        latest Winter Fest updates!
+      </p>
+    </div>
+  </Left>
+	<Right holiday="winter">
+    <SourceButton 
+      img="wintry-mini.png"
+      text={[
+        "The frigid background image is",
+        "Elmer Jacobs Christmas card, mid-20th c.",
+        "The snowy ghost is named Enzo. If you haven't found him yet, keep looking!",
+      ]}
+      url="https://collections.newberry.org/asset-management/2KXJ8ZS4WVG4K"
+    />
+
+    {data.map(( d, i  )=> <Card data={d} idx={i} />)}
+	</Right>
+</Layout>
+
+<script is:inline>
+document.documentElement.classList.add("winter");
+document.documentElement.classList.remove("halloween");
+</script>
+<style>
+
+</style>

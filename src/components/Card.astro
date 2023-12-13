@@ -1,0 +1,115 @@
+---
+type Image = {
+  width: number;
+  height: number;
+  altfn?: string;
+  ctxid?: string;
+};
+type Data = {
+  image: Image;
+  title: string;
+  blurb: string;
+  view: string;
+  about: string;
+};
+interface Props {
+  data: Data;
+  idx: number;
+}
+
+const { image, title, blurb, about, view } = Astro.props.data;
+
+const viewUrl = view.startsWith("http")
+  ? view
+  : "https://collections.newberry.org/" + view;
+const aboutDisabled = about.endsWith(']')
+---
+
+<div class="card-wings">
+<div class="card">
+	<img src={image.altfn ?? `https://collections.newberry.org/IIIF3/Image/${image.ctxid}/full/,400/0/default.jpg` }
+	/>
+		<!-- width={image.height === 400 ? image.width : Math.round((image.width / image.height) * 400 )} -->
+		<!-- height={400} -->
+	<div class="card-text-section">
+		<h2>{title}</h2>
+		<p set:html={blurb} />
+		<div class="btn-group">
+			<a href={view} target="_blank" aria-label={`View the ${title}`}>View</a>
+			{aboutDisabled ? (
+        <div class="disabled">
+          <span class="about-link">About</span>
+          <span class="coming-soon-link">Coming soon!</span>
+        </div> ) : (
+					<a href={view} target="_blank" aria-label={`Read more about the ${title}`}>
+						<span class="about-link">About</span>
+					</a>
+				)}
+		</div>
+	</div>
+</div>
+</div>
+
+<style>
+.card-wings {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+}
+.card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
+	text-align: center;
+
+	filter: drop-shadow(0 30px 10px rgba(var(--midnight),0.33));
+	backdrop-filter: blur(16px) saturate(180%);
+	background-color: rgba(var(--midnight), 0.33);
+	border: 1px solid rgb(var(--granite), 0.33);
+	border-radius: 10px;
+
+	gap: 10px;
+	padding: 33px;
+	max-width: 400px;
+}
+img {
+	object-fit: contain;
+	max-width: 100%;
+	max-height: 100%;
+	margin: auto;
+}
+h2 {
+	min-width: 0;
+  font-size: clamp(30px, 5vh, 3rem);
+  /* font-size: 3rem; */
+  color: rgb(vaR(--midnight));
+  text-shadow: 0 0 10px rgb(var(--splash-color)), 0 0 20px rgb(var(--splash-color)), 0 0 40px rgb(var(--splash-color)), 0 0 80px rgb(var(--splash-color));
+
+}
+.btn-group {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+.btn-group a, .disabled {
+	border-radius: 4px;
+	flex: 1;
+	font-family: "styrene";
+	background: rgb(var(--bg-color-1));
+	color: rgb(var(--fg-color-1));
+	border: 1px solid rgba(var(--fg-color-1), 0.4);
+	transition: 150ms;
+}
+.btn-group a:hover {
+	border: 1px solid rgb(var(--fg-color-1))
+}
+.disabled {
+	cursor: default;
+		opacity: 0.5;
+}
+</style>
