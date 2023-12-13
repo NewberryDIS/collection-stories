@@ -49,7 +49,7 @@ export const Tumblrcard = component$<TumblrcardProps>((props) => {
             },
             "& .liner ": {
               // backdropFilter: "blur(1px) saturate(1)",
-              filter: "blur(1px) saturate(1)",
+            filter: "blur(16px) saturate(180%)",
             },
           },
           "&.alt": {
@@ -85,8 +85,8 @@ export const Tumblrcard = component$<TumblrcardProps>((props) => {
             lineHeight: "3rem",
           },
           "& .liner": {
+              filter: "blur(1px) saturate(1)",
             backgroundPosition: "center",
-            filter: "blur(16px) saturate(180%)",
             width: "100%",
             height: "100%",
             // backdropFilter: "blur(16px) saturate(180%)",
@@ -104,7 +104,8 @@ export const Tumblrcard = component$<TumblrcardProps>((props) => {
       {/* <img src={image} alt="" /> */}
       <div class="liner" style={`background-image: url(${image}); `}></div>
       {/* <h2>{tags}</h2> */}
-      <h2 dangerouslySetInnerHTML={title} />
+      <h2  >{title}</h2>
+      {/* <h2 dangerouslySetInnerHTML={title} /> */}
     </a>
   );
 });

@@ -19,7 +19,7 @@ export const usePosts = routeLoader$(async (requestEvent) => {
   const client = tumblr.createClient({
     consumer_key: requestEvent.env.get("TUMBLR_API_KEY"),
   });
-  const response = await client.blogPosts("digitalnewberry.tumblr.com");
+  const response = await client.blogPosts("digitalnewberry.tumblr.com", {tag: ['collection stories']});
   let posts = response.posts;
   posts = posts.filter((p: Post) => p.trail[0].blog.name === "digitalnewberry");
   posts = posts
@@ -27,7 +27,7 @@ export const usePosts = routeLoader$(async (requestEvent) => {
     .map((p: Post) => {
       const htmlBlock = p.body;
       const h1Match = htmlBlock.match(/<h1>(.*?)<\/h1>/);
-      const h1Value = h1Match ? h1Match[1] : null;
+      const h1Value = h1Match ? h1Match[1].replace(/<\/?[^>]+(>|$)/g, ""): null;
       const imgMatch = htmlBlock.match(/<img[^>]*?src=['"](.*?)['"]/);
       const imgSrc = imgMatch ? imgMatch[1] : null;
 
@@ -40,6 +40,7 @@ export const usePosts = routeLoader$(async (requestEvent) => {
       };
     });
   // return response;
+  console.log(posts)
   return posts;
 });
 type MiniPost = {
