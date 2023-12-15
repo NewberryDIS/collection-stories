@@ -33,7 +33,7 @@ if (holiday === 'winter'){
       left: 0;
       position: fixed;
 }
-.ghost:not(.show){
+.winter.ghost:not(.show){
       display: none;
 }
 .winter {
@@ -47,6 +47,9 @@ if (holiday === 'winter'){
 }
 .nzo, .ball {
       position: relative;
+}
+.halloween .nzo {
+      animation: spookynzo 10s ease infinite;
 }
 .winter .nzo {
       animation: winterghost 10s ease-in-out infinite;

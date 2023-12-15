@@ -28,7 +28,7 @@
   100% { transform: translate(var(--end-x), 100vh); }
 }
 
-@keyframes ghoosty {
+@keyframes spookynzo {
   0% { top: 0%; left: -200px; opacity: 0.01; }
   20% { top: 100% }
   30% { opacity: 0.37; }

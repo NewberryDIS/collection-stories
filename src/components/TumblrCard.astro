@@ -4,26 +4,28 @@ interface Props {
     title: string;
     image: string;
     url: string;
-    // tags: string[];
+    tags: string[];
   };
   idx: number;
 }
-const { title, image, url } = Astro.props.data
+
+const { title, image, url, tags } = Astro.props.data
 const { idx } = Astro.props
 const backgroundImage = `url('${image}');`
 ---
 
 <a href={url} target="_blank" class="tumblr-card" id={`card-${idx}`}>
   <div class="liner" />
-  <h2>{title}</h2>
+  <h2 set:html={title} title={tags.join(', ')}/>
 </a>
 
 <style define:vars={{backgroundImage}}>
 .tumblr-card {
   position: relative;
-  max-width: 30%;
+  /* max-width: 30%; */
   /* min-width: 350px; */
   aspect-ratio: 1 / 1;
+  width: 333px;
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -36,7 +38,7 @@ const backgroundImage = `url('${image}');`
   box-shadow: 0 0 10px 10px rgba(0,0,0,0.25);
 }
 .tumblr-card:hover h2 {
-  background: rgba(255,255,255,0.77);
+  background: rgba(var(--bg-color-1),0.77);
   box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
 }
 .tumblr-card:hover .liner {
@@ -50,13 +52,12 @@ const backgroundImage = `url('${image}');`
 }
 .liner {
   background-image: var(--backgroundImage);
-  background-position: center;
+  background-position: 50% 25%;
   position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   left: 0;
-
 }
 h2 {
 
@@ -64,7 +65,7 @@ h2 {
   box-shadow: 4px 4px 60px rgba(0,0,0,0.2);
   transition: all 0.2s ease-in-out;
   text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
-  background: rgba(255,255,255,0.5);
+  background: rgba(var(--bg-color-1),0.5);
   color: rgb(var(--fg-color-1));
   margin: 16px;
   padding: 16px;

@@ -4,11 +4,11 @@ import Card from '../components/Card.astro';
 import Left from '../components/Left.astro'
 import Right from '../components/Right.astro'
 import Ghost from '../components/Ghost.astro'
-import SourceButton from '../components/SourceButton.astro'
+// import SourceButton from '../components/SourceButton.astro'
 import { getData } from '../stores/'
-// import data from '../demodata-holiday.json'
 import '../styles/snow.css'
 import '../styles/animations.css'
+// import data from '../demodata-holiday.json'
 
 const mei = "2KXJ8ZS43VB4Y"
 const data = await getData(mei)
@@ -55,17 +55,7 @@ const data = await getData(mei)
     </div>
   </Left>
 	<Right holiday="winter">
-    <SourceButton 
-      img="wintry-mini.webp"
-      text={[
-        "The frigid background image is",
-        "Elmer Jacobs Christmas card, mid-20th c.",
-        "The snowy ghost is named Enzo. If you haven't found him yet, keep looking!",
-      ]}
-      url="https://collections.newberry.org/asset-management/2KXJ8ZS4WVG4K"
-    />
-
-    {data.map(( d, i  )=> <Card data={d} idx={i} />)}
+    { data.map(( d, i ) => <Card data={d} idx={i} />) }
 	</Right>
 </Layout>
 

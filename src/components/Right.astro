@@ -1,18 +1,21 @@
 ---
 import Background from './Background.astro'
 import Arrow from './Arrow.astro'
+import SourceButton from '../components/SourceButton.astro'
+import { sourceButtonData } from '../stores/'
+import type {  Holiday } from '../stores/types'
 interface Props {
-  holiday: string;
+  holiday?: Holiday;
 }
 const { holiday } = Astro.props;
 ---
 
 <div class={`right ${holiday ?? ""}`}>
-  <Background holiday={holiday} />
+{ holiday && <Background holiday={holiday} /> }
   <div class="right-liner">
-    {holiday && <Arrow />}
+    { holiday && <> <SourceButton data={sourceButtonData[holiday]} /> <Arrow /> </> }
     <div class="card-wrapper" >
-      <slot  />
+      <slot />
     </div>
   </div>
 </div>
@@ -33,21 +36,9 @@ const { holiday } = Astro.props;
   justify-content: center;
   position: relative;
   gap: 20px;
-
+  padding-bottom: 77vh;
 }
-
-@media screen and (max-width: 1023px){
-  .right.halloween .right-liner,
-  .right.winter    .right-liner {
-    padding-block: 7vh 77vh;
-  }
-}
-
-/* lg */
-@media screen and (min-width: 1024px){
-  .right.halloween .right-liner,
-  .right.winter    .right-liner {
-    padding-block: 77vh;
-  }
+.right:not(.halloween, .winter) {
+  padding-top: 7vh;
 }
 </style>

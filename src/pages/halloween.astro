@@ -4,7 +4,7 @@ import Card from '../components/Card.astro';
 import Left from '../components/Left.astro'
 import Right from '../components/Right.astro'
 import Ghost from '../components/Ghost.astro'
-import SourceButton from '../components/SourceButton.astro'
+// import SourceButton from '../components/SourceButton.astro'
 import { getData, hallodata } from '../stores/'
 // import data from '../demodata-holiday.json'
 import '../styles/snow.css'
@@ -14,12 +14,8 @@ const mei = "2KXGDNLSJ6C"
 const doodoo = await getData(mei)
 const data = doodoo.length > 0 ? doodoo : hallodata
 
-
 // TODO: 
-// Halloween ghost
 // newverry logo
-
-
 ---
 
 <Layout title="A Very Newberry Halloween">
@@ -38,16 +34,6 @@ const data = doodoo.length > 0 ? doodoo : hallodata
     </div>
   </Left>
 	<Right holiday="halloween">
-    <SourceButton 
-        img="ghostyboy.webp"
-          text={[
-            "The spooky background image is the",
-            "Newberry Library, Chicago, 1975.",
-            "The terrifying ghost is Enzo.",
-          ]}
-          url="https://collections.newberry.org/asset-management/2KXJ8Z3DGL97?WS=AssetManagement"
-    />
-
     {data.map(( d, i  )=> <Card data={d} idx={i} />)}
 	</Right>
 </Layout>

@@ -1,3 +1,6 @@
+
+export type Holiday = 'winter' | 'halloween';
+
 // CORTEX TYPES
 
 export interface APIRequestInfo {

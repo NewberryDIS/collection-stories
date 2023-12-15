@@ -18,7 +18,7 @@ interface Props {
 }
 
 const { image, title, blurb, about, view } = Astro.props.data;
-let { data } = Astro.props
+const { data, idx } = Astro.props
 const viewUrl = view.startsWith("http")
   ? view
   : "https://collections.newberry.org/" + view;
@@ -29,7 +29,7 @@ console.log(data)
 </script>
 
 <div class="card-wings">
-	<div class="card">
+	<div class="card" id={`card-${idx}`}>
 		<img src={image.altfn || `https://collections.newberry.org/IIIF3/Image/${image.ctxid}/full/,400/0/default.jpg` }
 		/>
 		<!-- width={image.height === 400 ? image.width : Math.round((image.width / image.height) * 400 )} -->
@@ -38,7 +38,7 @@ console.log(data)
 			<h2>{title}</h2>
 			<p set:html={blurb} />
 			<div class="btn-group">
-				<a href={view} target="_blank" aria-label={`View the ${title}`}>View</a>
+				<a href={viewUrl} target="_blank" aria-label={`View the ${title}`}>View</a>
 				{aboutDisabled ? (
         	<div class="disabled">
           	<span class="about-link">About</span>
@@ -123,7 +123,6 @@ h2 {
   top: 0;
   right: 0;
   bottom: 0;
-  // display: "none";
   opacity: 0.0001;
 }
 .coming-soon, .about-link {

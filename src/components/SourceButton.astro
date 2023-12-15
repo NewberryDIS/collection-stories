@@ -1,11 +1,13 @@
 ---
 interface Props {
-  img: string;
-  url: string;
-  text: string[];
+  data: {
+    img: string;
+    url: string;
+    text: string[];
+  }
 }
 
-const { img, url, text } = Astro.props
+const { img, url, text } = Astro.props.data
 const bgimage =`url('/${img}');`
 ---
 
@@ -18,22 +20,29 @@ const bgimage =`url('/${img}');`
       <em>
         {text[1]}
       </em>
-      <a href={ url } class="rev-llines">View and the digital collections.</a>
+      <a href={ url } class="rev-llines">View at the digital collections.</a>
       {text[2]}
     </p>
 </div>
 
 <script>
-    document.getElementById('qmark').addEventListener('click', () => {
-      document.getElementById('qanswer').classList.toggle('show');
+const qmarkElement = document.getElementById('qmark');
+const qanswerElement = document.getElementById('qanswer');
+
+if (qanswerElement && qmarkElement) {
+    qmarkElement.addEventListener('click', () => {
+      qanswerElement.classList.toggle('show');
     });
+}
+
 </script>
 
 <style define:vars={{bgimage}}>
 .source-button {
-  position: fixed;
-  top: 10px;
-  right: 10px;
+  position: sticky;
+  top: 0;
+  right: 0;
+  padding: 20px 10px;
   display: flex;
   flex-direction: column;
   align-items: end;
@@ -64,7 +73,7 @@ const bgimage =`url('/${img}');`
   opacity: 0.0001;
   max-width: 200px;
 }
-.source-button:hover #qmark, .source-button:hover #qanswer, #qanswer.show {
+#qmark:hover ,#qmark:hover~#qanswer, #qanswer:hover, #qanswer.show {
   opacity: 0.99;
 }
 .rev-llines {

@@ -1,25 +1,39 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import Card from '../components/Card.astro';
 import Left from '../components/Left.astro'
 import Right from '../components/Right.astro'
 import TumblrCard from '../components/TumblrCard.astro'
-import data from '../demodata-tumblr.json'
----
+import Tags from '../components/Tags.astro'
+import { tumblrDataGetter } from '../stores/'
+// import data from '../demodata-tumblr.json'
 
+type ApiData = {
+  posts: MiniPost[];
+  tags: string[];
+}
+
+type MiniPost = {
+  title: string;
+  image: string;
+  url: string;
+  tags: string[];
+};
+
+const data:ApiData = await tumblrDataGetter()
+
+// <script define:vars={{data}}>console.log(data)</script>
+---
 <Layout title="Newberry Collection Stories">
   <Left>
-    <h1 slot="title" >
+  <h1 slot="title" >
       The Newberry's Collection Stories
     </h1>
     <div class="left-text" slot="left-text" >
-      <p>they good</p>
+      <Tags tags={data.tags} />
     </div>
   </Left>
 	<Right>
-
-
-    {data.map(d => <TumblrCard data={d} />)}
+    { data.posts.map((d, i: number) => <TumblrCard data={d} idx={i} />) }
 	</Right>
 </Layout>
 
@@ -29,4 +43,7 @@ document.documentElement.classList.remove("halloween");
 </script>
 
 <style>
+.left-text {
+flex: 1;
+}
 </style>

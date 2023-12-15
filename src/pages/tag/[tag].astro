@@ -1,0 +1,65 @@
+---
+const { tag } = Astro.params;
+import Layout from '../../layouts/Layout.astro';
+import Left from '../../components/Left.astro'
+import Right from '../../components/Right.astro'
+import TumblrCard from '../../components/TumblrCard.astro'
+import Tags from '../../components/Tags.astro'
+import { tumblrDataGetter } from '../../stores/'
+// import data from '../../demodata-tumblr.json'
+
+function titleCase(str: string) {
+  let splitString: string[] = str.split(' ');
+  for (var i = 0; i < splitString.length; i++) {
+    splitString[i] = splitString[i].charAt(0).toUpperCase() + splitString[i].slice(1); 
+  }
+  return splitString.join(' '); 
+}
+
+type ApiData = {
+  posts: MiniPost[];
+  tags: string[];
+}
+
+type MiniPost = {
+  title: string;
+  image: string;
+  url: string;
+  tags: string[];
+};
+
+// tag = tag ? tag : "Collection"
+
+const data: ApiData = await tumblrDataGetter(tag)
+
+console.log(data.allPosts)
+---
+
+<script define:vars={{data}}>console.log(data)</script>
+
+<Layout title={`Newberry ${tag ?  titleCase(tag) : "Collection" } Stories`} >
+  <Left>
+  <h1 slot="title" >
+      The Newberry's {tag ?  titleCase(tag) : "Collection" } Stories
+    </h1>
+    <div class="left-text" slot="left-text" >
+      <Tags tags={data.tags} />
+    </div>
+  </Left>
+	<Right>
+    { data.posts.map((d, i) => <TumblrCard data={d} idx={i} />) }
+	</Right>
+</Layout>
+
+<script is:inline>
+document.documentElement.classList.remove("winter");
+document.documentElement.classList.remove("halloween");
+</script>
+
+<style>
+.left-text {
+flex: 1;
+  align-self: stretch;
+}
+</style>
+
