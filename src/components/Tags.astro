@@ -23,12 +23,12 @@ const { tags } = Astro.props
   const resetButton = document.getElementById('reset-button');
   
   const searchBar = document.getElementById('tag-search-input');
+    const searchInput = searchBar.value.toLowerCase();
   
   function filterTags() {
-    const searchInput = searchBar.value.toLowerCase();
-    if (searchInput !== ''){
+    if (searchInput.length === 0){
       resetButton.style.display = 'block';
-      tagList.style.display = 'block';
+      tagList.style.display = 'flex';
     } else {
   
       resetButton.style.display = "none";
@@ -39,7 +39,7 @@ const { tags } = Astro.props
       const tagName = tag.querySelector('a').textContent.toLowerCase();
   
       if (tagName.includes(searchInput)) {
-        tag.style.display = 'block';
+        tag.style.display = 'flex';
       } else {
         tag.style.display = 'none';
       }
@@ -51,7 +51,7 @@ const { tags } = Astro.props
   
     for (let i = 0; i < tags.length; i++) {
       const tag = tags[i];
-      tag.style.display = 'block'; // Show all tags
+      tag.style.display = 'flex'; // Show all tags
     }
   }
   
@@ -63,7 +63,7 @@ const { tags } = Astro.props
   resetButton.addEventListener('click', resetFilter);
   
   document.addEventListener('click', function (event) {
-    if (event.target !== searchBar && event.target !== tagList) {
+    if (event.target !== searchBar && event.target !== tagList && searchInput.length === 0) {
       tagList.style.display = 'none';
     }
   });
@@ -84,9 +84,25 @@ const { tags } = Astro.props
   position: relative;
   align-self: end;
   margin: 10px 0;
+  display: flex;
   /* border: 1px solid white; */
 }
 
+@media screen and (max-width: 1023px) {
+  .tag-component {
+    flex: 1;
+    flex-direction: column-reverse;
+  }
+}
+
+/* med */
+@media screen and (min-width: 1024px){
+  .tag-component {
+    flex-direction: column;
+    flex-direction: column-reverse;
+    min-height: 250px;
+  }
+}
 .search-bar {
   align-self: end;
   position: relative;
@@ -107,24 +123,24 @@ ul {
   list-style-type: none;
   padding: 0 1px;
   display: none;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
   flex-wrap: wrap;
   justify-content: start;
-  /* justify-content: space-between; */
   align-items: start;
   gap: 4px;
   position: absolute;
   bottom: 20px;
-  max-height: 200px;
+  /* max-height: 200px; */
   overflow-y: auto;
 }
 
 .tag {
   font-family: 'styrene';
   font-size: 0.87rem;
-  background: rgba(var(--fg-color-1), 0.77);
+  background: rgba(var(--bg-color-1), 0.77);
   /* border-radius: 9px 0 9px 0; */
-  color:  rgba(var(--bg-color-1), 1);
+  border: 1px solid rgba(var(--fg-color-1));
+  color:  rgba(var(--fg-color-1), 1);
   display: flex;
   justify-content: center;
   align-items: center;
