@@ -51,6 +51,19 @@ export interface CortexData {
 }
 
 // TUMBLR TYPES
+
+export type TumblrProcessedApiData = {
+  posts: MiniPost[];
+  tags: string[];
+}
+
+export type MiniPost = {
+  title: string;
+  image: string;
+  url: string;
+  tags: string[];
+}
+
 export interface Blog {
   name: string;
   title: string;

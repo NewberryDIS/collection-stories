@@ -5,21 +5,12 @@ import Right from '../components/Right.astro'
 import TumblrCard from '../components/TumblrCard.astro'
 import Tags from '../components/Tags.astro'
 import { tumblrDataGetter } from '../stores/'
+// import { ApiData } from '../stores/types.ts'
 // import data from '../demodata-tumblr.json'
 
-type ApiData = {
-  posts: MiniPost[];
-  tags: string[];
-}
 
-type MiniPost = {
-  title: string;
-  image: string;
-  url: string;
-  tags: string[];
-};
 
-const data:ApiData = await tumblrDataGetter()
+const data = await tumblrDataGetter()
 
 // <script define:vars={{data}}>console.log(data)</script>
 ---

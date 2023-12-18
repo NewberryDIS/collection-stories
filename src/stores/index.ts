@@ -1,4 +1,5 @@
-import type {CortexData} from './types'
+import type {CortexData, Post, TumblrProcessedApiData, MiniPost } from './types'
+// @ts-ignore
 import tumblr from 'tumblr.js'
 
 const peUrl = [
@@ -10,7 +11,7 @@ const token = import.meta.env.CORTEX_API_TOKEN
 
 export async function tumblrDataGetter(urlTag?: string){
   console.log("urlTag", urlTag)
-  let tags = []
+  let tags: string[][] = []
   const client = tumblr.createClient({
     consumer_key: import.meta.env.TUMBLR_API_KEY,
   });
@@ -20,7 +21,7 @@ export async function tumblrDataGetter(urlTag?: string){
 
   let posts: Post[] = response.posts;
 
-let allp = posts
+  // let allp = posts
   posts = posts.filter((p) => p.trail[0].blog.name === "digitalnewberry");
   if (urlTag){
     const allResponse = await client.blogPosts("digitalnewberry.tumblr.com", { tag: ['collection stories']  });
@@ -32,7 +33,7 @@ let allp = posts
     })
   }
 
-  posts = posts.map((p) => {
+const miniPosts: MiniPost[] = posts.map((p) => {
 
     const htmlBlock = p.body;
 
@@ -40,7 +41,7 @@ let allp = posts
     const h1Value = h1Match ? h1Match[1].replace(/<\/?[^>]+(>|$)/g, ""): "null";
 
     const imgMatch = htmlBlock.match(/<img[^>]*?src=['"](.*?)['"]/);
-    const imgSrc = imgMatch ? imgMatch[1] : null;
+    const imgSrc = imgMatch ? imgMatch[1] : '';
 
     urlTag || tags.push(p.tags)
 
@@ -60,7 +61,7 @@ let allp = posts
   //   });
   // });  
 
-  return { posts: posts, tags: uniqTags, allPosts: allp };
+  return { posts: miniPosts, tags: uniqTags } as TumblrProcessedApiData;
   // return { posts: posts, tags: uniqTags, rawData: response.posts };
 }
 

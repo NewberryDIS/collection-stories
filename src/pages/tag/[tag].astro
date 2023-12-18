@@ -16,23 +16,12 @@ function titleCase(str: string) {
   return splitString.join(' '); 
 }
 
-type ApiData = {
-  posts: MiniPost[];
-  tags: string[];
-}
-
-type MiniPost = {
-  title: string;
-  image: string;
-  url: string;
-  tags: string[];
-};
 
 // tag = tag ? tag : "Collection"
 
-const data: ApiData = await tumblrDataGetter(tag)
+const data = await tumblrDataGetter(tag)
 
-console.log(data.allPosts)
+// console.log(data.allPosts)
 ---
 
 <script define:vars={{data}}>console.log(data)</script>
@@ -47,7 +36,7 @@ console.log(data.allPosts)
     </div>
   </Left>
 	<Right>
-    { data.posts.map((d, i) => <TumblrCard data={d} idx={i} />) }
+    { data.posts.map((d, i: number) => <TumblrCard data={d} idx={i} />) }
 	</Right>
 </Layout>
 

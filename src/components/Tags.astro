@@ -21,30 +21,39 @@ const { tags } = Astro.props
   const tags = tagList.getElementsByTagName('li');
   
   const resetButton = document.getElementById('reset-button');
-  
   const searchBar = document.getElementById('tag-search-input');
-    const searchInput = searchBar.value.toLowerCase();
+  let searchInput = searchBar.value.toLowerCase();
+  
+  searchBar.addEventListener('input', filterTags);
   
   function filterTags() {
-    if (searchInput.length === 0){
-      resetButton.style.display = 'block';
-      tagList.style.display = 'flex';
-    } else {
+      // Update searchInput with the current value of the search bar
+      searchInput = searchBar.value.toLowerCase();
   
-      resetButton.style.display = "none";
-      tagList.style.display = "none";
-    }
-    for (let i = 0; i < tags.length; i++) {
-      const tag = tags[i];
-      const tagName = tag.querySelector('a').textContent.toLowerCase();
-  
-      if (tagName.includes(searchInput)) {
-        tag.style.display = 'flex';
+      if (searchInput.length !== 0) {
+          resetButton.style.display = 'block';
+          tagList.style.display = 'flex';
       } else {
-        tag.style.display = 'none';
+          resetButton.style.display = 'none';
+          tagList.style.display = 'none';
       }
-    }
+  
+      for (let i = 0; i < tags.length; i++) {
+          const tag = tags[i];
+          const tagName = tag.querySelector('a').textContent.toLowerCase();
+  
+          if (tagName.includes(searchInput)) {
+              tag.style.display = 'flex';
+          } else {
+              tag.style.display = 'none';
+          }
+      }
   }
+  
+  
+  searchBar.addEventListener('focus', function(){
+    tagList.style.display = 'flex';
+  });
   
   function resetFilter() {
     searchBar.value = ''; // Clear the search input
@@ -54,12 +63,6 @@ const { tags } = Astro.props
       tag.style.display = 'flex'; // Show all tags
     }
   }
-  
-  searchBar.addEventListener('input', filterTags);
-  searchBar.addEventListener('focus', function(){
-    tagList.style.display = 'flex';
-  });
-  
   resetButton.addEventListener('click', resetFilter);
   
   document.addEventListener('click', function (event) {
@@ -90,7 +93,6 @@ const { tags } = Astro.props
 
 @media screen and (max-width: 1023px) {
   .tag-component {
-    flex: 1;
     flex-direction: column-reverse;
   }
 }
