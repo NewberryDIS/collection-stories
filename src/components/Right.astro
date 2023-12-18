@@ -12,6 +12,7 @@ const { holiday } = Astro.props;
 
 <div class={`right ${holiday ?? ""}`}>
 { holiday && <Background holiday={holiday} /> }
+  <slot name="outside-card-flow" />
   <div class="right-liner">
     { holiday && <> <SourceButton data={sourceButtonData[holiday]} /> <Arrow /> </> }
     <div class="card-wrapper" >
@@ -27,8 +28,9 @@ const { holiday } = Astro.props;
   flex: 3;
   padding: 0;
   overflow: visible;
-  display: grid;
   align-self: stretch;
+  display: flex;
+  flex-direction: column;
   /* height: auto; */
 }
 .card-wrapper {
@@ -37,9 +39,9 @@ const { holiday } = Astro.props;
   justify-content: center;
   position: relative;
   gap: 20px;
-  padding-bottom: 77vh;
+  padding: 0 20px 77vh 20px;
 }
-.right:not(.halloween, .winter) {
-  padding-top: 7vh;
-}
+/* .right:not(.halloween, .winter) .card-wrapper { */
+/*   padding-top: 7vh; */
+/* } */
 </style>

@@ -15,10 +15,6 @@ function titleCase(str: string) {
   }
   return splitString.join(' '); 
 }
-
-
-// tag = tag ? tag : "Collection"
-
 const data = await tumblrDataGetter(tag)
 
 // console.log(data.allPosts)
@@ -26,25 +22,80 @@ const data = await tumblrDataGetter(tag)
 
 <script define:vars={{data}}>console.log(data)</script>
 
-<Layout title={`Newberry ${tag ?  titleCase(tag) : "Collection" } Stories`} >
+<Layout title={`Newberry Collection Stories: ${titleCase(tag)}`} >
   <Left>
-  <h1 slot="title" >
-      The Newberry's {tag ?  titleCase(tag) : "Collection" } Stories
-    </h1>
-    <div class="left-text" slot="left-text" >
-      <Tags tags={data.tags} />
+    <div slot="title">
+      <h1>
+        Newberry Collection Stories
+      </h1>
+      <p>
+        <em>Tagged with "{  titleCase(tag || '') }"</em>
+      </p>
     </div>
+    <p>
+      Learn more about digitized manuscripts, maps, books, photographs, video, artwork, and other rare and unique materials from <a href="https://collections.newberry.org/" target="_blank" class="llines" >Newberry Digital Collections</a>.
+    </p>
   </Left>
 	<Right>
+	  <div slot="outside-card-flow">
+      <Tags tags={data.tags} />
+	  </div>
     { data.posts.map((d, i: number) => <TumblrCard data={d} idx={i} />) }
 	</Right>
 </Layout>
 
 <script is:inline>
-document.documentElement.classList.remove("winter");
-document.documentElement.classList.remove("halloween");
+  document.documentElement.classList.remove("winter");
+  document.documentElement.classList.remove("halloween");
 </script>
 
 <style>
+em {
+  font-size: 20px; 
+  line-height: 20px;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+@media screen and (max-width: 767px) {
+  .tag-component {
+    flex-direction: column-reverse;
+  }
+  #tag-list {
+    bottom: 0;
+    justify-content: end;
+    align-items: start;
+    position: relative;
+  }
+}
+
+/* med */
+@media screen and (min-width: 768px) and (max-width: 1023px){
+  .tag-component {
+    flex-direction: column;
+  }
+  #tag-list {
+    bottom: 20px;
+    justify-content: start;
+    /* justify-content: end; */
+    align-items: end;
+  }
+}
+/* lg */
+@media screen and (min-width: 1024px){
+  .tag-component {
+    flex-direction: column;
+    min-height: 250px;
+  }
+  #tag-list {
+    bottom: 20px;
+    justify-content: start;
+    align-items: start;
+    position: absolute;
+  }
+  .search-bar{ 
+    bottom: 0;
+  }
+}
 </style>
 

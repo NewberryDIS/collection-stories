@@ -1,4 +1,5 @@
 ---
+export const prerender = true
 import Layout from '../layouts/Layout.astro';
 import Card from '../components/Card.astro';
 import Left from '../components/Left.astro'
@@ -21,7 +22,7 @@ const data = await getData(mei)
     <h1 slot="title" >
       Newberry Winter Fest 
     </h1>
-    <div class="left-text" slot="left-text" >
+    <div class="left-text" >
       <p>
         As Chicago winter descends on the Newberry Library, we’re embracing
         this season with warm beverages and holiday lights. What better

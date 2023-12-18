@@ -24,6 +24,6 @@
 .card {
   z-index: 50;
 }
-.arrow-wrapper, .source-button, #snowflake-button {
+.arrow-wrapper, .source-button, #snowflake-button, #tag-list {
   z-index: 100;
 }

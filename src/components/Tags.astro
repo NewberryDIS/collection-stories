@@ -5,71 +5,97 @@ interface Props {
 const { tags } = Astro.props
 ---
 
-<div class="tag-component">
-  <ul id="tag-list">
-    {tags.map(tag => <li ><a href={`/tag/${tag}`} class="tag">{tag}</a></li>)}
-  </ul>
+<div class="tag-component" id="tag-component">
   <div class="search-bar">
-    <input type="text" id="tag-search-input" placeholder="" /> 
+    <input type="text" id="tag-search-input" placeholder="Explore stories by tag..." /> 
     <button id="reset-button">X</button>
   </div>
+  <ul id="tag-list">
+    {tags.map(tag => <li ><a href={`/tag/${tag}`} class="tag">{tag}</a></li>)}
+    <p id="no-results">No tags meet your search criteria.</p>
+  </ul>
 </div>
 
 <script is:inline>
-
-  const tagList = document.getElementById('tag-list')
-  const tags = tagList.getElementsByTagName('li');
-  
+document.addEventListener('DOMContentLoaded', function() {
   const resetButton = document.getElementById('reset-button');
   const searchBar = document.getElementById('tag-search-input');
+  const noTagsMessage = document.getElementById('no-results');
+  const tagList = document.getElementById('tag-list')
+  const tags = tagList.getElementsByTagName('li');
   let searchInput = searchBar.value.toLowerCase();
-  
-  searchBar.addEventListener('input', filterTags);
-  
-  function filterTags() {
-      // Update searchInput with the current value of the search bar
-      searchInput = searchBar.value.toLowerCase();
-  
-      if (searchInput.length !== 0) {
-          resetButton.style.display = 'block';
-          tagList.style.display = 'flex';
-      } else {
-          resetButton.style.display = 'none';
-          tagList.style.display = 'none';
-      }
-  
-      for (let i = 0; i < tags.length; i++) {
-          const tag = tags[i];
-          const tagName = tag.querySelector('a').textContent.toLowerCase();
-  
-          if (tagName.includes(searchInput)) {
-              tag.style.display = 'flex';
-          } else {
-              tag.style.display = 'none';
-          }
-      }
-  }
-  
+  searchInput.length > 0 && filterTags()
   
   searchBar.addEventListener('focus', function(){
-    tagList.style.display = 'flex';
+      tagList.style.display = 'flex'
   });
-  
-  function resetFilter() {
-    searchBar.value = ''; // Clear the search input
-  
+
+  // searchBar.addEventListener('blur', function(){
+  //   searchInput = searchBar.value.toLowerCase();
+  //   if (searchInput.length < 1){
+  //     tagList.style.display = 'none'
+  //   }
+  // });
+
+  searchBar.addEventListener('input', filterTags);
+  resetButton.addEventListener('click', resetFilter);
+
+function filterTags() {
+    searchInput = searchBar.value.toLowerCase();
+
+      tagList.style.display = 'flex'
+    if (searchInput.length === 0) {
+        resetButton.style.display = 'none';
+        noTagsMessage.style.display = 'none'; // Hide the message
+    } else {
+        resetButton.style.display = 'block';
+        showNoTagsMessage(); // Show the message
+    }
+
+    for (let i = 0; i < tags.length; i++) {
+        const tag = tags[i];
+        const tagName = tag.querySelector('a').textContent.toLowerCase();
+
+        if (tagName.includes(searchInput)) {
+            tag.style.display = 'flex';
+            hideNoTagsMessage(); // Hide the message if there are matching tags
+        } else {
+            tag.style.display = 'none';
+        }
+    }
+}
+function showNoTagsMessage() {
+    noTagsMessage.style.display = 'block';
+}
+
+function hideNoTagsMessage() {
+    noTagsMessage.style.display = 'none';
+}
+
+function resetFilter() {
+    searchBar.value = ''; 
+
+    resetButton.style.display = 'none';
+
     for (let i = 0; i < tags.length; i++) {
       const tag = tags[i];
-      tag.style.display = 'flex'; // Show all tags
+      tag.style.display = 'flex';
     }
-  }
-  resetButton.addEventListener('click', resetFilter);
-  
-  document.addEventListener('click', function (event) {
-    if (event.target !== searchBar && event.target !== tagList && searchInput.length === 0) {
-      tagList.style.display = 'none';
+}
+
+
+document.addEventListener('click', function (event) {
+    const parentElement = document.getElementById('tag-component');
+    const targetElement = event.target;
+
+    // Check if the target element is a child of the parent element
+    if (!parentElement.contains(targetElement)) {
+      tagList.style.display = 'none'
+    } else {
+        console.log('Click is outside the parent element.');
     }
-  });
+});
+});
 
 </script>
 
@@ -82,31 +108,34 @@ const { tags } = Astro.props
 }
 
 .tag-component {  
-  flex: 1;
-  min-width: 100%;
   position: relative;
-  align-self: end;
-  margin: 10px 0;
+  margin: 0 0 40px 0;
+  margin: 0;
+  padding: 10px 20px;
   display: flex;
   /* border: 1px solid white; */
 }
-
-@media screen and (max-width: 1023px) {
-  .tag-component {
-    flex-direction: column-reverse;
-  }
-}
-
-/* med */
-@media screen and (min-width: 1024px){
-  .tag-component {
-    flex-direction: column;
-    flex-direction: column-reverse;
-    min-height: 250px;
-  }
+#tag-list {
+  position: absolute;
+  top: 25px;
+  left: 20px;
+  right: 20px;
+  list-style-type: none;
+  padding: 3px;
+  border: 1px solid rgba(var(--fg-color-1), 0.33);
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: start;
+  align-items: start;
+  gap: 4px;
+  overflow-y: auto;
+  transition: 200ms;
+  background: rgb(var(--bg-color-1));
+  background: rgba(255,255,255,1);
+  /* height: 30vh; */
 }
 .search-bar {
-  align-self: end;
   position: relative;
   width: 100%;
   display: flex;
@@ -116,47 +145,43 @@ const { tags } = Astro.props
 
 input {
   flex: 1;
-  /* margin: 0 10px; */
-  padding: 6px;
-  /* font-size: 1rem; */
+  height: 27px;
+  /* padding: 6px; */
 }
 
-ul {
-  list-style-type: none;
-  padding: 0 1px;
-  display: none;
-  /* flex-direction: row-reverse; */
-  flex-wrap: wrap;
-  justify-content: start;
-  align-items: start;
-  gap: 4px;
-  position: absolute;
-  bottom: 20px;
-  /* max-height: 200px; */
-  overflow-y: auto;
-}
-
-.tag {
+#no-results, .tag {
   font-family: 'styrene';
   font-size: 0.87rem;
-  background: rgba(var(--bg-color-1), 0.77);
-  /* border-radius: 9px 0 9px 0; */
-  border: 1px solid rgba(var(--fg-color-1));
   color:  rgba(var(--fg-color-1), 1);
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 26px;
-  padding: 0 10px;
+  padding: 3px 6px;
   position: relative;
-  /* margin: 0 10px 10px 0; */
   text-decoration: none;
-  transition:  200ms;
-}
+  transition: background 200ms, height 10ms;
 
+  margin: 0;
+}
+#no-results {
+  display: none;
+  border: 1px solid rgba(var(--fg-color-1), 0);
+}
+.tag {
+  background: rgba(var(--bg-color-1), 0.77);
+  border: 1px solid rgba(var(--fg-color-1), 0.33);
+}
 .tag:hover {
   background-color: rgba(var(--fg-color-2), 1);
-  /* color: rgba(var(--fg-color-1), 1); */
 }
 
+/* sm */
+@media screen and (max-width: 767px) {
+}
+/* med */
+@media screen and (min-width: 768px) and (max-width: 1023px){
+}
+/* lg */
+@media screen and (min-width: 1024px){
+}
 </style>

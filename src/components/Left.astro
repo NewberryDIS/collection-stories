@@ -5,7 +5,7 @@ import NewberryLogo from './NewberryLogo.astro'
 <div class="left">
   <NewberryLogo />
   <slot name="title" />
-  <slot name="left-text" />
+  <slot />
   <footer>
     <a href="https://www.newberry.org/contact-librarian" target="_blank">Contact Us</a>
   </footer>
@@ -50,6 +50,10 @@ import NewberryLogo from './NewberryLogo.astro'
 
 :global(.left h1) {
   padding: 56px 0 0 0;
+  /* flex: 1; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   margin: 0;
 
 }
@@ -95,7 +99,7 @@ import NewberryLogo from './NewberryLogo.astro'
     position: sticky;
     padding: 16px 16px 24px 16px;
     flex: 1 1 0%;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: stretch;
     /* align-items: start; */
   }
