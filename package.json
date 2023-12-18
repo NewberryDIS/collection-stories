@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.3.2",
     "@astrojs/node": "^7.0.1",
     "@astrojs/vercel": "^6.1.0",
+    "@vercel/speed-insights": "^1.0.2",
     "astro": "^4.0.4",
     "nanostores": "^0.9.5",
     "tumblr.js": "^4.0.1",

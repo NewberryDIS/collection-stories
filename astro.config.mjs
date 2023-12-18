@@ -5,11 +5,12 @@ import node from "@astrojs/node";
 
 // https://astro.build/config
 export default defineConfig({
-  output: "server"
-  // adapter: node()
-  // adapter: vercel()
-  ,
-  adapter: node({
-    mode: "standalone"
-  })
+  site: "https://digital.newberry.org/collection-stories",
+  output: "server",
+  adapter: vercel({
+    speedInsights: { enabled: true, },
+  }),
+  // adapter: node({
+  //   mode: "standalone"
+  // })
 });
