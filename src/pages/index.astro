@@ -4,7 +4,8 @@ import Layout from '../layouts/Layout.astro';
 import Left from '../components/Left.astro'
 import Right from '../components/Right.astro'
 import TumblrCard from '../components/TumblrCard.astro'
-import Tags from '../components/Tags.astro'
+// tag page files are moved to out-of-project folder
+// import Tags from '../components/Tags.astro'
 import { tumblrDataGetter } from '../stores/'
 // import { ApiData } from '../stores/types.ts'
 // import data from '../demodata-tumblr.json'
@@ -13,8 +14,8 @@ import { tumblrDataGetter } from '../stores/'
 
 const data = await tumblrDataGetter()
 
-// <script define:vars={{data}}>console.log(data)</script>
 ---
+<script define:vars={{data}}>console.log(data)</script>
 <Layout title="Newberry Collection Stories">
   <Left>
     <h1 slot="title" >
@@ -25,9 +26,9 @@ const data = await tumblrDataGetter()
     </p>
   </Left>
 	<Right>
-	  <div slot="outside-card-flow">
-      <Tags tags={data.tags} />
-	  </div>
+	  <!-- <div slot="outside-card-flow"> -->
+   <!--    <Tags tags={data.tags} /> -->
+	  <!-- </div> -->
     { data.posts.map((d, i: number) => <TumblrCard data={d} idx={i} />) }
 	</Right>
 </Layout>

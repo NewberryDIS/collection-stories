@@ -9,6 +9,14 @@ const peUrl = [
 
 const token = import.meta.env.CORTEX_API_TOKEN
 
+export async function tumblrPostGetter(id: string){
+  const client = tumblr.createClient({
+
+    consumer_key: import.meta.env.TUMBLR_API_KEY,
+  })
+
+}
+
 export async function tumblrDataGetter(urlTag?: string){
   console.log("urlTag", urlTag)
   let tags: string[][] = []
@@ -21,8 +29,8 @@ export async function tumblrDataGetter(urlTag?: string){
 
   let posts: Post[] = response.posts;
 
-  // let allp = posts
   posts = posts.filter((p) => p.trail[0].blog.name === "digitalnewberry");
+  let allp = posts
   if (urlTag){
     const allResponse = await client.blogPosts("digitalnewberry.tumblr.com", { tag: ['collection stories']  });
     let allPosts: Post[] = allResponse.posts;
@@ -48,7 +56,8 @@ const miniPosts: MiniPost[] = posts.map((p) => {
     return {
       title: h1Value as string,
       image: imgSrc,
-      url: p.short_url,
+      url: '/post/' + p.slug,
+      // url: p.short_url,
       tags: p.tags
     };
   });
@@ -61,7 +70,7 @@ const miniPosts: MiniPost[] = posts.map((p) => {
   //   });
   // });  
 
-  return { posts: miniPosts, tags: uniqTags } as TumblrProcessedApiData;
+  return { posts: miniPosts, tags: uniqTags, allp: allp } as TumblrProcessedApiData;
   // return { posts: posts, tags: uniqTags, rawData: response.posts };
 }
 
