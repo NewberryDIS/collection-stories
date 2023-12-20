@@ -13,9 +13,10 @@ type Data = {
   about: string;
 };
 
+import { base } from '$app/paths'
 export let data: Data, idx: number 
 const { image, title, blurb, about, view } = data
-const viewUrl = view.startsWith("http") || view.startsWith("C.aspx")
+const viewUrl = view.startsWith("http") 
   ? view
   : "https://collections.newberry.org/" + view;
 const aboutDisabled = about.endsWith(']')
@@ -25,7 +26,7 @@ const aboutDisabled = about.endsWith(']')
 
 <div class="card-wings">
 	<div class="card" id={`card-${idx}`}>
-		<img src={image.altfn || `https://collections.newberry.org/IIIF3/Image/${image.ctxid}/full/,400/0/default.jpg` }
+		<img src={image.altfn ? base + image.altfn : `https://collections.newberry.org/IIIF3/Image/${image.ctxid}/full/,400/0/default.jpg` }
 		  alt=""
 		/>
 		<div class="card-text-section">
@@ -39,7 +40,7 @@ const aboutDisabled = about.endsWith(']')
           	<span class="coming-soon">Coming soon!</span>
         	</div> 
         {:else}
-						<a href={view} target="_blank" aria-label={`Read more about the ${title}`}>
+						<a href={about} target="_blank" aria-label={`Read more about the ${title}`}>
 							<span class="about-link">About</span>
 						</a>
         {/if}

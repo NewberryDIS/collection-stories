@@ -1,4 +1,5 @@
 <script>
+  import { base } from '$app/paths'
 export let holiday
 
 // halloween and winter images are declared here; 
@@ -9,14 +10,14 @@ const topImage = holiday === 'halloween' ? '/scary-newberry.webp' : '/wintry-new
 <div class={holiday + ' background'}>
   <div class="background-top">
     {#if holiday}
-      <img src={topImage} alt="" /> 
+      <img src={base + topImage} alt="" /> 
     {/if}
   </div>
   <div class="background-middle">
     {#if 'winter' === holiday}
       {#each Array.from({length: 199}) as _, i}
         <div class={`snow sno-${Math.floor(i / 50)}`}>
-          <img src={`/snow/snowflake-${i % 6 + 1}.webp`} alt="">
+          <img src={`${base}/snow/snowflake-${i % 6 + 1}.webp`} alt="">
         </div>
       {/each}
     {:else}
@@ -25,7 +26,7 @@ const topImage = holiday === 'halloween' ? '/scary-newberry.webp' : '/wintry-new
   </div>
   <div class="background-bottom">
     {#if 'halloween' === holiday}
-      <img src="/spooky-newberry.webp" alt="" />
+      <img src="{base}/spooky-newberry.webp" alt="" />
     {:else}
       <span></span>
     {/if}

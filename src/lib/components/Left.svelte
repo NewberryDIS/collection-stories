@@ -1,8 +1,9 @@
-<script>
+<script lang="ts">
   import NewberryLogo from '$comps/NewberryLogo.svelte'
+  export let holiday: import('$lib/types').Holiday
 </script>
 
-<div class="left">
+<div class="left {holiday}" >
   <NewberryLogo />
   <slot name="title" />
   <slot />

@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { base } from '$app/paths'
   import type { Holiday } from '$lib/types'
   export let holiday: Holiday
 
@@ -14,17 +15,17 @@
 </script>
 
 <div class={`${holiday} ghost`} class:showNzo id="ghost" >
-  <div class="nzo"><img src='/ghostyboy.webp' alt=""></div>
+  <div class="nzo"><img src='{base}/ghostyboy.webp' alt=""></div>
   {#if holiday === 'winter'}
     <div class="ball">
-      <img src="/ghostyball.webp" alt="" />
+      <img src="{base}/ghostyball.webp" alt="" />
     </div>
   {/if}
 </div>
 
 {#if holiday === 'winter'}
   <button class:nzo-active={showNzo} id="snowflake-button" on:click={toggleNzo}>
-    <img src="/snow/snowflake-3.webp" alt="" />
+    <img src="{base}/snow/snowflake-3.webp" alt="" />
   </button> 
 {/if}
 

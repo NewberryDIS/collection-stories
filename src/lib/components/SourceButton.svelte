@@ -6,10 +6,13 @@
       text: string[];
     }
   }
+
+  import { base } from '$app/paths'
+
   export let data: SourceButtonData
   const { img, url, text } = data
 
-  const bgimage =`url('/${img}');`
+  const bgimage =`url('${base}/${img}');`
   let show = false
 
 </script>
