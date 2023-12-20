@@ -1,23 +1,9 @@
-import { defineConfig } from "vite";
-import { qwikVite } from "@builder.io/qwik/optimizer";
-import { qwikCity } from "@builder.io/qwik-city/vite";
-import tsconfigPaths from "vite-tsconfig-paths";
-import { macroPlugin } from "@builder.io/vite-plugin-macro";
+import { sveltekit } from '@sveltejs/kit/vite';
+import { defineConfig } from 'vitest/config';
 
-export default defineConfig(() => {
-  return {
-    base: "/_csh",
-    // base: "/collection-stories",
-    plugins: [
-      macroPlugin({ preset: "pandacss" }),
-      qwikCity(),
-      qwikVite(),
-      tsconfigPaths(),
-    ],
-    preview: {
-      headers: {
-        "Cache-Control": "public, max-age=600",
-      },
-    },
-  };
+export default defineConfig({
+	plugins: [sveltekit()],
+	test: {
+		include: ['src/**/*.{test,spec}.{js,ts}']
+	}
 });

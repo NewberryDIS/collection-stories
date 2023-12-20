@@ -26,8 +26,8 @@ with open(find_dotenv(), 'r') as f:
 
 with open(find_dotenv(), 'w') as f:
     for line in lines:
-        if line.startswith('CORTEX_API_TOKEN'):
-            f.write(f'CORTEX_API_TOKEN="{token}"\n')
+        if line.startswith('CORTEX_API_KEY'):
+            f.write(f'CORTEX_API_KEY="{token}"\n')
         else:
             f.write(line)
 
