@@ -6,7 +6,7 @@ const backgroundImage = `url('${image}');`
 
 <a href={url} target="_blank" class="tumblr-card" id={`card-${idx}`}>
   <div class="liner" style={`background-image: ${backgroundImage};`} />
-  <h2 title={tags.join(', ')}>{@html title}</h2>
+  <h2 >{@html title}</h2>
 </a>
 
 <style lang="scss">

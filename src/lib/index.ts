@@ -5,6 +5,66 @@ import tumblr from 'tumblr.js'
 
 export const blogPostData = writable('')
 
+function decodeHtmlEntities(str) {
+  // Create a regular expression to match HTML entities
+  const entityRegex = /&([a-z0-9]+|#[0-9]+|#x[0-9a-f]+);/gi;
+
+  // Replace each entity with its corresponding character
+  return str.replace(entityRegex, (match, entity) => {
+    // Check for numeric entities
+    if (entity.startsWith('#')) {
+      const charCode = parseInt(entity.slice(1), entity.startsWith('#x') ? 16 : 10);
+      return String.fromCharCode(charCode);
+    } else {
+      // Look up named entities in a map
+      const entityMap = {
+        'lsquo': '\u2018', // Left single quotation mark
+        'rsquo': '\u2019', // Right single quotation mark
+        // Add more entities as needed:
+        '&lt;': '<',
+        '&gt;': '>',
+        '&amp;': '&',
+        '&hellip;': '...',
+        // etc.
+      };
+      return entityMap[entity] || entity; // Return decoded character or original entity if not found
+    }
+  });
+}
+
+export function truncateStringAtWordBoundary(str, maxLength = 50) {
+  // Preprocess the string to decode HTML entities
+  str = decodeHtmlEntities(str);
+
+  if (str.length <= maxLength) {
+    // String is already within the limit, return it as is
+    return str;
+  }
+
+  const lastIndex = Math.min(str.length, maxLength);
+  // Find the last space within the allowed length
+  const lastSpaceIndex = str.lastIndexOf(' ', lastIndex);
+
+  if (lastSpaceIndex !== -1) {
+    // Truncate at the found space
+    str = str.slice(0, lastSpaceIndex);
+  } else {
+    // No space found within the limit, truncate at the maxLength
+    str = str.slice(0, maxLength);
+  }
+
+  // Check for trailing comma or exclamation mark and remove if necessary
+  let finalChar = str[str.length - 1]
+  if ([',', '!', ':', '*', '?', '+'].includes(finalChar)){
+    // str.endsWith(',') || str.endsWith('!')) {
+    str = str.slice(0, -1);
+  }
+
+  return str + '...'; // Add ellipsis
+}
+
+// the PackageExtractor api url; at some point the API will be fixed (allegedly) 
+// and we will be able to add the representative MEI into the Content fields, eliminating most of these api calls
 const peUrl = [
   "https://collections.newberry.org/API/PackageExtractor/v1.0/Extract?Package=",
   "&PackageFields=SystemIdentifier,Title,new.Context,Link,new.Link-2&RepresentativeFields=SystemIdentifier,MediaEncryptedIdentifier,Title,MaxWidth,MaxHeight&ContentFields=SystemIdentifier,MediaEncryptedIdentifier,Title,CoreField.IIIFResourceType&format=json",
@@ -16,7 +76,7 @@ export async function getTumblrPost(id: string, tumblrApiKey){
   })
 }
 
-export async function getTumblrData(tumblrApiKey: string){
+export async function getTumblrData(post: string, tumblrApiKey: string){
   // commenting out all tag-related complexities; urlTag should be a parameter
   // console.log("urlTag", urlTag)
   // let tags: string[][] = []
