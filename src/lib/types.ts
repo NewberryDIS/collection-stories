@@ -61,6 +61,8 @@ export type MiniPost = {
   title: string;
   image: string;
   url: string;
+  tumblrurl: string;
+  body: string;
   tags: string[];
 }
 

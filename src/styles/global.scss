@@ -41,6 +41,23 @@ html {
     --fg-color-2: var(--lake);
 }
 
+.dark {
+
+    --accent: 136, 58, 234;
+    --accent-light: 224, 204, 250;
+    --accent-dark: 49, 10, 101;
+    --accent-gradient: linear-gradient(45deg,
+            rgb(var(--accent)),
+            rgb(var(--accent-light)) 30%,
+            white 60%);
+
+    --splash-color: var(--lavender);
+    --fg-color-1: var(--granite);
+    --fg-color-2: var(--lavender);
+    --bg-color-1: var(--midnight);
+    --bg-color-2: var(--sapphire);
+}
+
 .halloween {
     --splash-color: var(--flame);
     --fg-color-1: var(--granite);

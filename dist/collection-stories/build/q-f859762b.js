@@ -1,0 +1,1 @@
+import{j as s,C as e,R as l}from"./q-a7fc02df.js";import"./q-e2e295ef.js";const _=()=>s("div",null,{class:"d_flex flex_column justify_space-between items_start m_0 p_0 lg:flex_row pos_relative"},e(l,null,3,"FC_0"),1,"FC_1");export{_ as s_dd5YY9LQTnI};

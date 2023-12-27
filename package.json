@@ -37,6 +37,7 @@
   "type": "module",
   "dependencies": {
     "@sveltejs/adapter-static": "^3.0.1",
+    "bigger-picture": "^1.1.12",
     "tumblr.js": "^4.0.1"
   }
 }

@@ -1,10 +1,11 @@
 <script lang="ts">
   import { page } from '$app/stores'
+  import { base } from '$app/paths'
 	import { goto, preloadData, pushState } from '$app/navigation'
   import Left from '$comps/Left.svelte'
   import Right from '$comps/Right.svelte'
   import { truncateStringAtWordBoundary } from '$lib'
-  console.log($page.params)
+  // console.log($page.params)
   // tags stuff
   // import TumblrCard from '$comps/TumblrCard.svelte'
 	// import Modal from '$comps/Modal.svelte'
@@ -20,7 +21,6 @@
   // console.log(data)
 
 </script>
-
 <Left>
   <h1 slot="title" >
     Newberry Collection Stories
@@ -31,7 +31,7 @@
 </Left>
 <Right>
   {#each data.cards as d, idx}
-<a href={d.url} target="_blank" class="tumblr-card" id="card-{idx}" >
+<a href={d.tumblrurl} target="_blank" class="tumblr-card" id="card-{idx}" >
 <!-- <a on:click|preventDefault={(e) => showModal(e, d)} href={d.url} target="_blank" class="tumblr-card" id="card-{idx}" > -->
   <div class="liner" style="background-image: url('{d.image}');" />
   <h2 >{truncateStringAtWordBoundary(d.title)}</h2>
@@ -41,6 +41,17 @@
 
 
 <style lang="scss">
+  .hidden-link {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    // opacity: 0.000001;
+
+  }
+  .hidden-link:hover {
+
+    opacity: 0.99999;
+  }
 .tumblr-card {
   position: relative;
   aspect-ratio: 1 / 1;

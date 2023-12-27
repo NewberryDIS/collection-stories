@@ -112,15 +112,15 @@ export async function getTumblrData(post: string, tumblrApiKey: string){
 
     const imgMatch = htmlBlock.match(/<img[^>]*?src=['"](.*?)['"]/);
     const imgSrc = imgMatch ? imgMatch[1] : '';
-
+// const 
     // urlTag || tags.push(p.tags)
 
     return {
       title: h1Value as string,
       image: imgSrc,
-      // url: '/post/' + p.slug,
-      url: p.short_url,
-      // body: p.body,
+      url: p.slug,
+      tumblrurl: p.short_url,
+      body: p.body,
       tags: p.tags
 
     };

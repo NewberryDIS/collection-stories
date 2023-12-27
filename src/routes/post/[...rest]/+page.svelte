@@ -1,22 +1,51 @@
 <script lang="ts">
-	import { goto, preloadData, pushState } from '$app/navigation'
-	import { page } from '$app/stores'
+  // import '$lib/dark-mode-toggle.js'
+  import {base} from '$app/paths'
+  import { onMount } from "svelte";
+  import {afterNavigate} from '$app/navigation'
+  import {page } from '$app/stores'
+  import BiggerPicture, { type BiggerPictureInstance } from "bigger-picture/svelte";
+  import "bigger-picture/css";
   import Left from '$comps/Left.svelte'
   import Right from '$comps/Right.svelte'
-  // import TumblrCard from '$comps/TumblrCard.svelte'
-	// import Modal from '$comps/Modal.svelte'
-	// import BlogPost from './post/[id]/+page.svelte'
-
-  // import { blogPostData } from '$lib'
-  // tag page files are moved to out-of-project folder
-  // import Tags from '$comps/Tags.svelte'
-  // import { ApiData } from '$lib/types'
-
+  import { truncateStringAtWordBoundary } from '$lib'
+  import Article from '$comps/Article.svelte'
+  let bp: BiggerPictureInstance, essayCards;
   export let data
-
   // console.log(data)
+  afterNavigate(() => {
+    const pagedata = data.cards.filter(f =>  $page.params.rest.includes(f.url)).pop()
+    if ($page.params.rest){
+      bp.open({
+        intro: "fadeup",
+        items: [{ html: "" }],
+        onOpen: (container: HTMLElement!) => {
+          container.querySelector(".bp-x").remove();
+          // history.pushState($page.params.rest, "")
+          container.classList.add("blur");
+          new Article({
+            target: container.querySelector(".bp-html"),
+            props: { data: pagedata } 
+          });
+        },
+        onClose: (container) => {
+          history.back()
+        }
+      });
+    } else {
+      let opts = ""
+      bp.close()
+    }
+  })
+  onMount(() => {
+    bp = BiggerPicture({
+      target: document.body,
+    });
+  });
+
 </script>
 
+  <dark-mode-toggle></dark-mode-toggle>
 <Left>
   <h1 slot="title" >
     Newberry Collection Stories
@@ -26,18 +55,14 @@
   </p>
 </Left>
 <Right>
-	<!-- <div slot="outside-card-flow"> -->
-  <!--    <Tags tags={data.tags} /> -->
-	<!-- </div> -->
   {#each data.cards as d, idx}
-<a href={d.url} target="_blank" class="tumblr-card" id="card-{idx}" >
-<!-- <a on:click|preventDefault={(e) => showModal(e, d)} href={d.url} target="_blank" class="tumblr-card" id="card-{idx}" > -->
-  <div class="liner" style="background-image: url('{d.image}');" />
-  <h2 title={d.tags.join(', ')}>{@html d.title}</h2>
-</a>
+    <a href="{base}/post/{d.url}"  class="tumblr-card" id="card-{idx}" >
+      <!-- <a on:click|preventDefault={(e) => showModal(e, d)} href={d.url} target="_blank" class="tumblr-card" id="card-{idx}" > -->
+      <div class="liner" style="background-image: url('{d.image}');" />
+      <h2 >{truncateStringAtWordBoundary(d.title)}</h2>
+    </a>
   {/each}
 </Right>
-
 
 <style lang="scss">
 .tumblr-card {
