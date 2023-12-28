@@ -70,11 +70,7 @@ const peUrl = [
   "&PackageFields=SystemIdentifier,Title,new.Context,Link,new.Link-2&RepresentativeFields=SystemIdentifier,MediaEncryptedIdentifier,Title,MaxWidth,MaxHeight&ContentFields=SystemIdentifier,MediaEncryptedIdentifier,Title,CoreField.IIIFResourceType&format=json",
 ];
 
-export async function getTumblrPost(id: string, tumblrApiKey){
-  const client = tumblr.createClient({
-    consumer_key: tumblrApiKey,
-  })
-}
+
 
 export async function getTumblrData(post: string, tumblrApiKey: string){
   // commenting out all tag-related complexities; urlTag should be a parameter
@@ -121,7 +117,8 @@ export async function getTumblrData(post: string, tumblrApiKey: string){
       url: p.slug,
       tumblrurl: p.short_url,
       body: p.body,
-      tags: p.tags
+      tags: p.tags,
+      p: p
 
     };
   });

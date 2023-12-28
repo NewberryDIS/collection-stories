@@ -1,18 +1,22 @@
 <script lang="ts">
-  // import '$lib/dark-mode-toggle.js'
+// import  './dark-mode-toggle.js'
+  import tumblr from 'tumblr.js'
   import {base} from '$app/paths'
   import { onMount } from "svelte";
   import {afterNavigate} from '$app/navigation'
   import {page } from '$app/stores'
+import { browser } from '$app/environment'
   import BiggerPicture, { type BiggerPictureInstance } from "bigger-picture/svelte";
   import "bigger-picture/css";
   import Left from '$comps/Left.svelte'
   import Right from '$comps/Right.svelte'
-  import { truncateStringAtWordBoundary } from '$lib'
+  // import { truncateStringAtWordBoundary, getTumblrPost } from '$lib'
+  import { truncateStringAtWordBoundary  } from '$lib'
   import Article from '$comps/Article.svelte'
-  let bp: BiggerPictureInstance, essayCards;
+  let bp: BiggerPictureInstance, essayCards, opts = ''
   export let data
   // console.log(data)
+  
   afterNavigate(() => {
     const pagedata = data.cards.filter(f =>  $page.params.rest.includes(f.url)).pop()
     if ($page.params.rest){
@@ -33,19 +37,23 @@
         }
       });
     } else {
-      let opts = ""
       bp.close()
     }
   })
-  onMount(() => {
+  onMount(async () => {
+  await import ('./dark-mode-toggle.js');
+  });
+  onMount( () => {
     bp = BiggerPicture({
       target: document.body,
     });
   });
 
 </script>
-
+{#if browser}
   <dark-mode-toggle></dark-mode-toggle>
+  <!-- <DarkModeToggle /> -->
+{/if}
 <Left>
   <h1 slot="title" >
     Newberry Collection Stories

@@ -15,6 +15,8 @@ const links = doc.querySelectorAll('a');
 links.forEach(link => {
   link.setAttribute('target', '_blank');
 });
+// const images = doc.querySelectorAll('img')
+//     images.forEach(image => )
 
 // Get the modified HTML string
  modifiedHtmlString = doc.documentElement.innerHTML;
@@ -22,8 +24,8 @@ links.forEach(link => {
 </script>
 <article>
 
-<svelte:component this={doc} />
-  <!-- {@html modifiedHtmlString} -->
+<!-- <svelte:component this={doc} /> -->
+  {@html modifiedHtmlString}
   <!-- {@html data.body} -->
 </article>
 
