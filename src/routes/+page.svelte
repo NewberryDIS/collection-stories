@@ -33,7 +33,8 @@
   {#each data.cards as d, idx}
 <a href={d.tumblrurl} target="_blank" class="tumblr-card" id="card-{idx}" >
 <!-- <a on:click|preventDefault={(e) => showModal(e, d)} href={d.url} target="_blank" class="tumblr-card" id="card-{idx}" > -->
-  <div class="liner" style="background-image: url('{d.image}');" />
+  <!-- <div class="liner" style="background-image: url('{d.image}');" /> -->
+  <img class="liner" src={d.image} alt="" />
   <h2 >{truncateStringAtWordBoundary(d.title)}</h2>
 </a>
   {/each}
@@ -41,17 +42,6 @@
 
 
 <style lang="scss">
-  .hidden-link {
-    position: fixed;
-    bottom: 0;
-    right: 0;
-    // opacity: 0.000001;
-
-  }
-  .hidden-link:hover {
-
-    opacity: 0.99999;
-  }
 .tumblr-card {
   position: relative;
   aspect-ratio: 1 / 1;
@@ -65,11 +55,17 @@ text-align: center;
 &:hover {
 box-shadow: 0 0 10px 10px rgba(0,0,0,0.25);
 & h2 {
-background: rgba(var(--bg-color-1),0.77);
+// background: rgba(var(--bg-color-1),0.77);
 box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.2);
     }
     & .liner {
-filter: blur(16px) saturate(180%);
+            // transform: scale(2) translate(-25%, -25%);
+            transform: scale(1.25);
+            // background-size: 250%;
+            // width: 200%;
+            // height: 200%;
+            // object-fit: none;
+// filter: blur(16px) saturate(180%);
     }
   }
 }
@@ -79,10 +75,18 @@ filter: blur(16px) saturate(180%);
 .tumblr-card, h2 {
   border: 1px solid rgb(var(--bg-color-1));
 }
+
 .liner {
-  background-image: var(--backgroundImage);
-background-position: 50% 25%;
-  background-size: cover;
+            transform: scale(1.15);
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    object-fit: cover;
+object-position: center;
+//   background-image: var(--backgroundImage);
+// background-position: 50% 25%;
+//   background-size: 100%;
 position: absolute;
 top: 0;
 right: 0;
