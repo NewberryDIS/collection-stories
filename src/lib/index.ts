@@ -18,13 +18,25 @@ function decodeHtmlEntities(str) {
 		} else {
 			// Look up named entities in a map
 			const entityMap = {
-				lsquo: '\u2018', // Left single quotation mark
-				rsquo: '\u2019', // Right single quotation mark
+				// lsquo: '\u2018', // Left single quotation mark
+				// rsquo: '\u2019', // Right single quotation mark
 				// Add more entities as needed:
 				'&lt;': '<',
+				'lt': ' < ',
 				'&gt;': '>',
+				' gt ': ' > ',
 				'&amp;': '&',
-				'&hellip;': '...'
+				'amp': '&',
+				'&hellip;': '...',
+        'hellip': '...',
+        '&lsquo;': '\u2018',
+        'lsquo': '\u2018',
+        '&rsquo;': '\u2019',
+        'rsquo': '\u2019',
+        '&ldquo;': '\u201C',
+        'ldquo': '\u201C',
+        '&rdquo;': '\u201D',
+        'rdquo': '\u201D'
 				// etc.
 			};
 			return entityMap[entity] || entity; // Return decoded character or original entity if not found

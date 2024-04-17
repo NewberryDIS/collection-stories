@@ -1,9 +1,10 @@
 <script lang="ts">
   import NewberryLogo from '$comps/NewberryLogo.svelte'
+  export let reverseColor = false
   export let holiday: import('$lib/types').Holiday
 </script>
 
-<div class="left {holiday}" >
+<div class="left {holiday} {reverseColor ? 'rev' : ''}" class:reverseColor={reverseColor} >
   <NewberryLogo />
   <slot name="title" />
   <slot />
@@ -12,8 +13,22 @@
   </footer>
 </div>
 <style lang="scss">
+/*.left.reverse-color:not(.holiday){*/
+.left.rev:not(.holiday){
+--bg-color-1: var(--sapphire);
+--bg-color-2: var(--sapphire);
+--fg-color-1: var(--granite);
+--fg-color-2: var(--granite);
+--splash-color: var(--granite);
 
+--fg-color-1: var(--sapphire);
+--fg-color-2: var(--sapphire);
+--bg-color-1: var(--granite);
+--bg-color-2: var(--granite);
+--splash-color: var(--fg-color-1);
+}
 .left {
+      box-shadow: 4px 4px 60px 8px rgba(0,0,0,0.1);
   background-color: rgb(var(--bg-color-1));
   color: rgb(var(--fg-color-1));
   top: 0;
