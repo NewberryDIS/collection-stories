@@ -1,5 +1,5 @@
 
-export type Holiday = 'winter' | 'halloween';
+export type Holiday = 'winter' | 'halloween' | 'transc';
 
 // CORTEX TYPES
 

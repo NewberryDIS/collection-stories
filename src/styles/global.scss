@@ -82,6 +82,30 @@ html {
 	color: rgb(var(--fg-color-1));
 }
 
+
+.transc {
+
+	--splash-color: var(--park-green);
+
+	--fg-color-1: var(--sand);
+	--fg-color-2: var(--granite);
+
+	--bg-color-1: var(--midnight);
+	--bg-color-2: var(--granite);
+	--bg-1: linear-gradient(
+		60deg,
+		rgb(var(--bg-color-1)) 0vw,
+		40vw,
+		rgb(var(--bg-color-2)) 40vw 100vw
+	);
+	--bg-2: linear-gradient(
+		60deg,
+		rgb(var(--bg-color-2)) 0vw,
+		40vw,
+		rgb(var(--bg-color-1)) 40vw 100vw
+	);
+	color: rgb(var(--fg-color-1));
+}
 .winter {
 	--splash-color: var(--lake);
 	--fg-color-1: var(--granite);

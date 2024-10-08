@@ -8,7 +8,7 @@
 </script>
 
 <div class={`right ${holiday ?? ""}`}>
-  {#if holiday}
+  {#if holiday }
     <Background holiday={holiday} />
   {/if}
   <slot name="outside-card-flow" />

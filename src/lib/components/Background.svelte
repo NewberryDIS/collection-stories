@@ -3,8 +3,8 @@
 export let holiday
 
 // halloween and winter images are declared here; 
-// in the html section below, if holiday isn't one of those 2, there's no <img> at all
-const topImage = holiday === 'halloween' ? '/scary-newberry.webp' : '/wintry-newberry.webp'  
+let topImage = holiday === 'halloween' ? '/scary-newberry.webp' : 'winter' ? '/wintry-newberry.webp'   : '/tarnsc.jpg'
+  if (holiday === 'transc') topImage = '/julia.jpg'
 </script>
 
 <div class={holiday + ' background'}>
@@ -17,10 +17,17 @@ const topImage = holiday === 'halloween' ? '/scary-newberry.webp' : '/wintry-new
     {#if 'winter' === holiday}
       {#each Array.from({length: 199}) as _, i}
         <div class={`snow sno-${Math.floor(i / 50)}`}>
-          <img src={`${base}/snow/snowflake-${i % 6 + 1}.webp`} alt="">
+          <img src={`${base}/snow/snowflake-${i % 6 + 1}.webp`} alt="" />
+        </div>
+      {/each}
+    {:else if 'transc' === holiday}
+      {#each Array.from({length: 199}) as _, i}
+        <div class={`word sno-${Math.floor(i / 50)}`} style="--spin-dir: {Math.round( Math.random() ) === 0 ? 'normal' : 'reverse'} ; --spin-speed: {Math.random() * i + 3}s">
+          <img src={`${base}/words/words-${i % 19 + 1}.png`} alt="" />
         </div>
       {/each}
     {:else}
+
       <span></span>
     {/if}
   </div>
