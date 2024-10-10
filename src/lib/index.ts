@@ -254,7 +254,7 @@ export const hallodata = [
     },
     title: 'Halloween postcards, ca. 1910s',
     blurb:
-      'Send e-greetings with vintage Halloween images from our collections! Treat a friend with digitized witches, ghosts, and clowns -- just copy & paste into a text, email, or social media message.',
+      'Send e-greetings with vintage Halloween images from our collections! Treat a friend with digitized witches, ghosts, and clowns at Newberry Postcard Sender.',
     view: 'https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA45P1L0W&SMLS=1&RW=1280&RH=603#/DamView&VBID=2KXJA45P1T3R&PN=1&WS=SearchResults ',
     about:
       'https://www.tumblr.com/digitalnewberry/730081438520705024/vintage-halloween-postcards?source=share'
@@ -268,7 +268,7 @@ export const hallodata = [
     title: 'Book of magical charms, ca. 1612',
     blurb:
       'This 17th-century book of magical charms is the ultimate self-help guide, covering everything from speaking with "spiritts" to curing a toothache.',
-    view: 'https://collections.newberry.org/asset-management/2KXJ8Z9UGC2Q',
+    view: 'https://collections.newberry.org/asset-management/2KXJ8Z9UGC2Q?BRPN=5',
     about:
       'https://www.tumblr.com/digitalnewberry/731458343803158528/the-book-of-magical-charms?source=share&ref=_tumblr'
   },
@@ -279,7 +279,7 @@ export const hallodata = [
       ctxid: '2KXJ8ZS86HE6V',
       altfn: '/coloringbookpage.webp'
     },
-    title: 'Color Our Collections: Newberry Halloween 2023',
+    title: 'Color Our Collections: Newberry Halloween',
     blurb:
       "Inspired by the <a href='https://library.nyam.org/colorourcollections/' target='_blank' class='llines'>online #ColorOurCollections festival</a>, a special Halloween coloring book based on our vintage postcards. Get a peek into old Halloween traditions with these pages fun for kids and adults alike!",
     view: 'https://collections.newberry.org/asset-management/2KXJ8ZS86HE6V',
@@ -316,7 +316,7 @@ export const hallodata = [
     blurb:
       'English broadsides featuring ghostly offerings of warnings, advice, and denunciations in verse form.',
     view: 'https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA45TD1YF&SMLS=1&RW=1280&RH=603#/DamView&VBID=2KXJA45TDYBZ&PN=1&WS=SearchResults',
-    about: '[grey for now]'
+    about: 'https://digitalnewberry.tumblr.com/post/763879134412849152/spiritual-counsel'
   },
   {
     image: { width: 600, height: 400, ctxid: '2KXJ8ZSJ9Q7PB' },
@@ -331,8 +331,8 @@ export const hallodata = [
     image: { width: 267, height: 400, ctxid: '2KXJ8ZS6Z99FF' },
     title: 'Assorted demons, early to mid-20th c.',
     blurb: 'For all your soul-selling, cake-walking, and golfing needs',
-    view: 'https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA4P76K0W&SMLS=1&RW=1920&RH=963#/DamView&VBID=2KXJA4P78LED&PN=1&WS=AssetManagement',
-    about: '[grey for now]'
+    view: 'https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA47YW7LYP&SMLS=1&RW=1920&RH=953#/DamView&VBID=2KXJA47YW7BWI&PN=1&WS=SearchResults',
+    about: 'https://digitalnewberry.tumblr.com/post/732191582402543617/no-one-told-me-in-library-school-that-my-work'
   },
   {
     image: {
@@ -344,6 +344,6 @@ export const hallodata = [
     title: 'Bonus: Happy Autumn',
     blurb: "It's always peak fall foliage in the Newberry's postcard collections.",
     view: 'https://collections.newberry.org/asset-management?WS=AssetManagement#/DamView&VBID=2KXJA4P6H3VT&PN=1&WS=AssetManagement',
-    about: '[grey for now]'
+    about: 'https://digitalnewberry.tumblr.com/post/731981905024647168/leaves-are-falling-in-our-themed-set-of-autumn'
   }
 ];
