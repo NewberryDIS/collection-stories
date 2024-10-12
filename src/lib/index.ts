@@ -255,7 +255,7 @@ export const hallodata = [
     title: 'Halloween postcards, ca. 1910s',
     blurb:
       'Send e-greetings with vintage Halloween images from our collections! Treat a friend with digitized witches, ghosts, and clowns at Newberry Postcard Sender.',
-    view: 'https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA45P1L0W&SMLS=1&RW=1280&RH=603#/DamView&VBID=2KXJA45P1T3R&PN=1&WS=SearchResults ',
+    view: 'https://digital.newberry.org/postcard-sender/2KXJ8ZSUDPRUO/',
     about:
       'https://www.tumblr.com/digitalnewberry/730081438520705024/vintage-halloween-postcards?source=share'
   },
@@ -316,7 +316,7 @@ export const hallodata = [
     blurb:
       'English broadsides featuring ghostly offerings of warnings, advice, and denunciations in verse form.',
     view: 'https://collections.newberry.org/CS.aspx?VP3=DamView&VBID=2KXJA45TD1YF&SMLS=1&RW=1280&RH=603#/DamView&VBID=2KXJA45TDYBZ&PN=1&WS=SearchResults',
-    about: 'https://digitalnewberry.tumblr.com/post/763879134412849152/spiritual-counsel'
+    about: 'https://discrepancybot.tumblr.com/post/763959162862485504/that-blazing-star-referred-to-in-the-upper'
   },
   {
     image: { width: 600, height: 400, ctxid: '2KXJ8ZSJ9Q7PB' },
